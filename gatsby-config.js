@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Starter Blog',
-    author: 'Kyle Mathews',
-    description: 'A starter blog demonstrating what Gatsby can do.',
-    siteUrl: 'https://gatsbyjs.github.io/gatsby-starter-blog/',
+    title: 'Ice Cream on a Sunday',
+    author: 'Vendela Larsson',
+    description: 'A blog about ice cream.',
   },
   pathPrefix: '/gatsby-starter-blog',
   plugins: [
@@ -47,6 +46,7 @@ module.exports = {
     `gatsby-plugin-feed`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-plugin-typography',
       options: {
