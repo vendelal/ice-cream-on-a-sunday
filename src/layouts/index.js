@@ -1,8 +1,34 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import styled from 'styled-components'
 
-import Jumbotron from '../components/jumbotron'
 import { rhythm, scale } from '../utils/typography'
+
+const FooterWrapper = styled.div`
+  background-color: black;
+  width: 100%;
+`
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+`
+
+const FooterCTAText = styled.a`
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+`
+
+const FooterCTAImage = styled.img``
+
+const FooterLinks = styled.div``
+
+const FooterCopyright = styled.small``
 
 class Template extends React.Component {
   render() {
@@ -35,10 +61,29 @@ class Template extends React.Component {
         </h3>
       )
     }
+
+    let footer = (
+      <FooterWrapper>
+        <ContentWrapper>
+          <FooterCTAText>Follow on Instagram</FooterCTAText>
+          <FooterCTAImage></FooterCTAImage>
+          <FooterLinks>
+            <FooterCopyright>
+              Vendela Larsson 2018
+            </FooterCopyright>
+            <Link to={'www.github.com/icecreamonasunday'}>
+              Check out this project on GitHub
+            </Link>
+          </FooterLinks>
+        </ContentWrapper>
+      </FooterWrapper>
+    )
+
     return (
       <div>
         {header}
         {children()}
+        {footer}
       </div>
     )
   }
