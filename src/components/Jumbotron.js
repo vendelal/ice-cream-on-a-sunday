@@ -43,7 +43,7 @@ const JumbotronDate = styled.small`
 `
 
 
-const Jumbotron = ({ data }) => (
+const Jumbotron = ( props ) => (
 
   <JumbotronWrapper>
     <ContentWrapper>
@@ -64,21 +64,21 @@ const Jumbotron = ({ data }) => (
 
 export default Jumbotron
 
-export const query = graphql`
-  query BlogPostQuery {
-    allContentfulRecipePost(sort: { fields: [createdAt], order: ASC }) {
-      edges {
-        node {
-          title
-          date
-          instructions
-          ingredients
-          ingredientIllustration
-          combinedIllustration
-          separatedIllustration
-          inTheWildPhoto
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query BlogPostQuery {
+//     allContentfulRecipePost(sort: { fields: [createdAt], order: ASC }) {
+//       edges {
+//         node {
+//           title
+//           date
+//           instructions
+//           ingredients
+//           ingredientIllustration
+//           combinedIllustration
+//           separatedIllustration
+//           inTheWildPhoto
+//         }
+//       }
+//     }
+//   }
+// `
