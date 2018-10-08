@@ -1,5 +1,4 @@
 import Typography from 'typography'
-import Type from '../styles/Typography.scss'
 
 const brandColor = "#EF3E23"
 
@@ -8,6 +7,7 @@ const typography = new Typography({
   baseLineHeight: 1.5,
   color: brandColor,
   headerFontFamily: [
+    "CircularStd-Bold",
     "Avenir Next",
     "Helvetica Neue",
     "Segoe UI",
@@ -16,6 +16,7 @@ const typography = new Typography({
     "sans-serif",
   ],
   bodyFontFamily: [
+    "CircularStd-Book",
     "Avenir Next",
     "Helvetica Neue",
     "Segoe UI",
@@ -23,6 +24,15 @@ const typography = new Typography({
     "Arial",
     "sans-serif",
   ],
+  overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+    h1: {
+      fontFamily: ['Ahkio-Bold', 'sans-serif'].join(','),
+      fontSize: "45px",
+    },
+    h2: {
+      fontFamily: ['Ahkio-Bold', 'sans-serif'].join(','),
+    },
+  })
 });
 
 // Hot reload typography in development.

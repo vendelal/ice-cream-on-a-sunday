@@ -9,7 +9,7 @@ import ButtonPrimary from '../components/buttonprimary'
 class BlogIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    const posts = get(this, 'props.data.allContentfulRecipePost.edges')
 
     return (
       <div>
@@ -39,16 +39,15 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allContentfulRecipePost(sort: {fields: [date], order: ASC}) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY")
-            title
+          title
+          date
+          illustrationCombined {
+            file {
+              url
+            }
           }
         }
       }

@@ -6,6 +6,8 @@ import Helmet from 'react-helmet'
 
 import ButtonPrimary from '../components/buttonprimary'
 import Jumbotron from '../components/jumbotron'
+import SectionHeader from '../components/sectionheader'
+import ArticleLinkWithVisual from '../components/articlelinkwithvisual'
 import Header from '../components/header'
 import { rhythm } from '../utils/typography'
 
@@ -19,92 +21,65 @@ const RestofPostsArea = styled.div``
 
 const ContentWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
   max-width: 960px;
-  padding: 1rem;
-`
-
-const Post = styled.div`
-  margin-left: 3rem;
-  position: relative;
-  width: 23%;
-`
-
-const PostTitle = styled.h3`
-  border-top: 4px solid black;
-  line-height: 4rem;
-  margin-bottom: 0;
-`
-
-const PostDate = styled.small`
-  left: -3rem;
-  letter-spacing: 1px;
-  position: absolute;
-  text-transform: uppercase;
-  top: 14px;
-  transform: rotate(-90deg);
-`
-
-const PostLink = styled(Link)`
-  color: #4056A1;
-  text-decoration: none;
+  padding: 0px 1rem;
 `
 
 class HomePage extends React.Component {
   render() {
 
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const firstPost = get(this, 'props.data.firstPost.edges[0].node')
-    const recentPosts = get(this, 'props.data.recentPosts.edges')
-    const restPosts = get(this, 'props.data.restPosts.edges')
+    // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const featuredPost = get(this, 'props.data.featured.edges[0].node')
+    const edges = get(this, 'props.data.nextThree.edges')
+    const nextThreePosts = edges.map(edge => edge.node)
+    const lastEdges = get(this, 'props.data.restFour.edges')
+    const restFourPosts = lastEdges.map(edge => edge.node)
 
     return (
       <div>
         <Jumbotron
-          title={firstPost.frontmatter.title}
-          date={firstPost.frontmatter.date}
-          excerpt={firstPost.excerpt}
-          slug={firstPost.fields.slug}
+          title={featuredPost.title}
+          date={featuredPost.date}
+          excerpt="TODO: fix the rich text Contentful thing."
+          illustrationCombined={featuredPost.illustrationCombined.file.url}
+          slug="slug"
         />
         <RecentPostsArea>
           <ContentWrapper>
-            <Header
+            <SectionHeader
               text="Recent Creations"
-              position="center"
             />
-            {recentPosts.map(({ node }) => {
-              const title = get(node, 'frontmatter.title') || node.fields.slug
-              return (
-                <Post key={node.fields.slug}>
-                  <PostTitle>{title}</PostTitle>
-                  <PostDate>{node.frontmatter.date}</PostDate>
-                  <PostLink to={node.fields.slug}>
-                    Get Recipe
-                  </PostLink>
-                </Post>
-              )
-            })}
-            </ContentWrapper>
-            <ContentWrapper></ContentWrapper>
-          </RecentPostsArea>
-          <RestofPostsArea>
-            <div>
-            {restPosts.map(({ node }) => {
-              const title = get(node, 'frontmatter.title') || node.fields.slug
-              return (
-                <Post key={node.fields.slug}>
-                  <PostTitle>{title}</PostTitle>
-                  <PostDate>{node.frontmatter.date}</PostDate>
-                  <PostLink to={node.fields.slug}>
-                    Get Recipe
-                  </PostLink>
-                </Post>
-              )
-            })}
-            </div>
-          </RestofPostsArea>
+          </ContentWrapper>
+          <ContentWrapper>
+            {nextThreePosts.map(nextThreePosts =>
+              <ArticleLinkWithVisual
+              nextThreePosts={nextThreePosts}
+              title={nextThreePosts.title}
+              date={nextThreePosts.date}
+              image={nextThreePosts.illustrationIngredients.file.url}
+              slug="slug" />)
+            }
+          </ContentWrapper>
+        </RecentPostsArea>
+        <RestofPostsArea>
+          <ContentWrapper>
+            <SectionHeader
+              text="Recent Creations"
+            />
+          </ContentWrapper>
+          <ContentWrapper>
+            {restFourPosts.map(restFourPosts =>
+              <ArticleLinkWithVisual
+              restFourPosts={restFourPosts}
+              title={restFourPosts.title}
+              date={restFourPosts.date}
+              image={restFourPosts.illustrationCombined.file.url}
+              slug="slug" />)
+            }
+          </ContentWrapper>
+        </RestofPostsArea>
       </div>
     )
   }
@@ -119,44 +94,41 @@ export const pageQuery = graphql`
         title
       }
     }
-    firstPost: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 1) {
+    featured: allContentfulRecipePost(sort: {fields: [date], order: ASC}, limit: 1) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
+          title
+          date(formatString: "MMMM DD, YYYY")
+          illustrationCombined {
+            file {
+              url
+            }
           }
         }
       }
     }
-    recentPosts: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, skip: 1, limit: 3) {
+    nextThree: allContentfulRecipePost(sort: {fields: [date], order: ASC}, skip: 1, limit: 3) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD")
-            title
+          title
+          date(formatString: "MMM DD, YY")
+          illustrationIngredients {
+            file {
+              url
+            }
           }
         }
       }
     }
-    restPosts: allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, skip: 4, limit: 4) {
+    restFour: allContentfulRecipePost(sort: {fields: [date], order: ASC}, skip: 4, limit: 4) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD")
-            title
+          title
+          date(formatString: "MMM DD, YY")
+          illustrationCombined {
+            file {
+              url
+            }
           }
         }
       }

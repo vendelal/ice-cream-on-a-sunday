@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
+import {colors} from '../styles/variables'
 import ButtonPrimary from './buttonprimary'
 
 
@@ -14,7 +15,6 @@ const JumbotronWrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  background-color: pink;
   display: flex;
   justify-content: flex-end;
   margin: 0 auto;
@@ -23,15 +23,17 @@ const ContentWrapper = styled.div`
 `
 const JumbotronTextBanner = styled.div`
   background-color: white;
-  border: 1px solid #F7D3CB;
+  border: 1px solid ${colors.barelyTherePink};
   border-top: 0;
   margin: 0px 0px 50px;
   padding: 100px 50px 60px;
   width: 450px;
 `
 
-const JumbotronTitle = styled.h1`
+const JumbotronTitle = styled.h3`
   border-top: 4px solid black;
+  font-family: "Ahkio-Bold";
+  font-size: 3rem;
   line-height: 4rem;
   margin-bottom: 0;
 `
@@ -42,19 +44,23 @@ const JumbotronDate = styled.small`
   text-transform: uppercase;
 `
 
+const JumbotronImage = styled.img`
+  height: 650px;
+`
+
 
 const Jumbotron = ( props ) => (
 
   <JumbotronWrapper>
     <ContentWrapper>
-      <img src="./peanut-butter-cookies-and-cream-combined.png" />
+      <JumbotronImage src={props.illustrationCombined} />
       <JumbotronTextBanner>
         <JumbotronTitle>{props.title}</JumbotronTitle>
         <JumbotronDate>{props.date}</JumbotronDate>
         <p>{props.excerpt}</p>
         <ButtonPrimary
           text="Give. Me. The. Recipe."
-          destination={props.slug}
+          destination="#"
         />
       </JumbotronTextBanner>
     </ContentWrapper>
@@ -63,22 +69,3 @@ const Jumbotron = ( props ) => (
 )
 
 export default Jumbotron
-
-// export const query = graphql`
-//   query BlogPostQuery {
-//     allContentfulRecipePost(sort: { fields: [createdAt], order: ASC }) {
-//       edges {
-//         node {
-//           title
-//           date
-//           instructions
-//           ingredients
-//           ingredientIllustration
-//           combinedIllustration
-//           separatedIllustration
-//           inTheWildPhoto
-//         }
-//       }
-//     }
-//   }
-// `
