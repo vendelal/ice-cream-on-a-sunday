@@ -1,0 +1,5 @@
+export const darkGray = '#4A4A4A'
+export const hotRed = '#EF3E23'
+export const barelyTherePink = '#F7D3CB'
+export const paper = '#F8F6F1'
+export const warmWhite = '#F9F9F7'

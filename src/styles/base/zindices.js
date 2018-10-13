@@ -1,0 +1,8 @@
+export const basement = '-999999'
+export const layout = '1000'
+export const object = '2000'
+export const component = '3000'
+export const subcomponent = '3010'
+export const modal = '4000'
+export const submodal = '4010'
+export const ceiling = '99999'

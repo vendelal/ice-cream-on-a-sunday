@@ -4,53 +4,98 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import {colors} from '../styles/variables'
+import Variables, {
+  Colors,
+  Sizes,
+  Spacing,
+  Zindices,
+} from '../styles/variables'
 import ButtonPrimary from './buttonprimary'
 
+import gridPaper from '../images/grid_paper.jpg'
 
 const JumbotronWrapper = styled.div`
-  background-image: url("images/grid-paper.jpg");
-  background-color: cornflowerblue;
+  background-color: ${Colors.paper};
+  background-image: url(${gridPaper});
+  background-repeat: repeat;
+  background-size: cover;
   width: 100%;
 `
 
 const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   margin: 0 auto;
-  max-width: 960px;
-  padding: 0px 1rem;
+  max-width: ${Sizes.contentWidth};
+  padding: 0px ${Spacing.spacingMedium} ${Spacing.spacingMedium};
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
 `
+
 const JumbotronTextBanner = styled.div`
-  background-color: white;
-  border: 1px solid ${colors.barelyTherePink};
+  background-color: ${Colors.warmWhite};
+  border: 1px solid ${Colors.barelyTherePink};
   border-top: 0;
-  margin: 0px 0px 50px;
-  padding: 100px 50px 60px;
-  width: 450px;
+  grid-column: 1 / 2;
+  grid-row: 3 / 8;
+  padding: 150px ${Spacing.spacingMedium} ${Spacing.spacingLarge};
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
 `
 
 const JumbotronTitle = styled.h3`
   border-top: 4px solid black;
-  font-family: "Ahkio-Bold";
+  font-family: 'Ahkio-Bold';
   font-size: 3rem;
   line-height: 4rem;
   margin-bottom: 0;
 `
 
 const JumbotronDate = styled.small`
+  display: block;
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
+  padding: ${Spacing.spacingBase} 0px;
 `
 
 const JumbotronImage = styled.img`
-  height: 650px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 5;
+  justify-self: center;
+  margin: 0;
+  max-height: 340px;
+  z-index: ${Zindices.ceiling};
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    max-height: 500px;
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+    max-height: 500px;
+  }
 `
 
-
-const Jumbotron = ( props ) => (
-
+const Jumbotron = props => (
   <JumbotronWrapper>
     <ContentWrapper>
       <JumbotronImage src={props.illustrationCombined} />
@@ -58,14 +103,10 @@ const Jumbotron = ( props ) => (
         <JumbotronTitle>{props.title}</JumbotronTitle>
         <JumbotronDate>{props.date}</JumbotronDate>
         <p>{props.excerpt}</p>
-        <ButtonPrimary
-          text="Give. Me. The. Recipe."
-          destination="#"
-        />
+        <ButtonPrimary text="Give. Me. The. Recipe." destination="#" />
       </JumbotronTextBanner>
     </ContentWrapper>
   </JumbotronWrapper>
-
 )
 
 export default Jumbotron

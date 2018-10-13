@@ -1,5 +1,14 @@
-export const colors = {
-  darkGray: "#4A4A4A",
-  hotRed: "#EF3E23",
-  barelyTherePink: "#F7D3CB",
-};
+import * as Colors from './base/colors'
+import * as Sizes from './base/sizes'
+import * as Spacing from './base/spacing'
+import * as Zindices from './base/zindices'
+
+const Variables = {
+  ...Colors,
+  ...Sizes,
+  ...Spacing,
+  ...Zindices,
+}
+
+export { Colors, Sizes, Spacing, Zindices }
+export default Variables
