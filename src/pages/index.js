@@ -8,16 +8,41 @@ import ButtonPrimary from '../components/buttonprimary'
 import Jumbotron from '../components/jumbotron'
 import SectionHeader from '../components/sectionheader'
 import ArticleLinkWithVisual from '../components/articlelinkwithvisual'
-import Header from '../components/header'
+
+import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import { rhythm } from '../utils/typography'
 
-const RecentPostsArea = styled.div`
-  background-color: white;
-  border-top: 1px solid #F7D3CB;
-  border-bottom: 1px solid #F7D3CB;
+const RecentPostsArea = styled.section`
+  background-color: ${Colors.warmWhite};
+  border-top: 1px solid #f7d3cb;
+  border-bottom: 1px solid #f7d3cb;
 `
 
-const RestofPostsArea = styled.div``
+const RecentPostsContentWrapper = styled.ul`
+  display: grid;
+  list-style-type: none;
+  margin: 0 auto;
+  max-width: ${Sizes.contentWidth};
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+  }
+`
+
+const RestOfPostsArea = styled.section``
+
+const RestOfPostsContentWrapper = styled.ul`
+  display: grid;
+  list-style-type: none;
+  margin: 0 auto;
+  max-width: ${Sizes.contentWidth};
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+`
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -29,7 +54,6 @@ const ContentWrapper = styled.div`
 
 class HomePage extends React.Component {
   render() {
-
     // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const featuredPost = get(this, 'props.data.featured.edges[0].node')
     const edges = get(this, 'props.data.nextThree.edges')
@@ -48,38 +72,36 @@ class HomePage extends React.Component {
         />
         <RecentPostsArea>
           <ContentWrapper>
-            <SectionHeader
-              text="Recent Creations"
-            />
+            <SectionHeader text="Recent Creations" />
           </ContentWrapper>
-          <ContentWrapper>
-            {nextThreePosts.map(nextThreePosts =>
+          <RecentPostsContentWrapper>
+            {nextThreePosts.map(nextThreePosts => (
               <ArticleLinkWithVisual
-              nextThreePosts={nextThreePosts}
-              title={nextThreePosts.title}
-              date={nextThreePosts.date}
-              image={nextThreePosts.illustrationIngredients.file.url}
-              slug="slug" />)
-            }
-          </ContentWrapper>
+                nextThreePosts={nextThreePosts}
+                title={nextThreePosts.title}
+                date={nextThreePosts.date}
+                image={nextThreePosts.illustrationIngredients.file.url}
+                slug="slug"
+              />
+            ))}
+          </RecentPostsContentWrapper>
         </RecentPostsArea>
-        <RestofPostsArea>
+        <RestOfPostsArea>
           <ContentWrapper>
-            <SectionHeader
-              text="Recent Creations"
-            />
+            <SectionHeader text="Recent Creations" />
           </ContentWrapper>
-          <ContentWrapper>
-            {restFourPosts.map(restFourPosts =>
+          <RestOfPostsContentWrapper>
+            {restFourPosts.map(restFourPosts => (
               <ArticleLinkWithVisual
-              restFourPosts={restFourPosts}
-              title={restFourPosts.title}
-              date={restFourPosts.date}
-              image={restFourPosts.illustrationCombined.file.url}
-              slug="slug" />)
-            }
-          </ContentWrapper>
-        </RestofPostsArea>
+                restFourPosts={restFourPosts}
+                title={restFourPosts.title}
+                date={restFourPosts.date}
+                image={restFourPosts.illustrationCombined.file.url}
+                slug="slug"
+              />
+            ))}
+          </RestOfPostsContentWrapper>
+        </RestOfPostsArea>
       </div>
     )
   }
@@ -94,7 +116,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    featured: allContentfulRecipePost(sort: {fields: [date], order: ASC}, limit: 1) {
+    featured: allContentfulRecipePost(
+      sort: { fields: [date], order: ASC }
+      limit: 1
+    ) {
       edges {
         node {
           title
@@ -107,7 +132,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    nextThree: allContentfulRecipePost(sort: {fields: [date], order: ASC}, skip: 1, limit: 3) {
+    nextThree: allContentfulRecipePost(
+      sort: { fields: [date], order: ASC }
+      skip: 1
+      limit: 3
+    ) {
       edges {
         node {
           title
@@ -120,7 +149,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    restFour: allContentfulRecipePost(sort: {fields: [date], order: ASC}, skip: 4, limit: 4) {
+    restFour: allContentfulRecipePost(
+      sort: { fields: [date], order: ASC }
+      skip: 4
+      limit: 4
+    ) {
       edges {
         node {
           title

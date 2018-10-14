@@ -4,47 +4,88 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
+import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 
-const ArticleLinkWithVisualWrapper = styled.div`
-  width: 23%;
+const ArticleLinkWithVisualWrapper = styled.li`
+  align-self: start;
+  display: grid;
+  justify-self: stretch;
+  padding: ${Spacing.spacingLarge};
+
+  @media screen and (min-width: ${Sizes.breakpointXSmall}) {
+    grid-template-columns: 33% 1fr;
+    grid-template-rows: 1fr;
+    padding: 0 ${Spacing.spacingLarge};
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    padding: ${Spacing.spacingBase};
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    padding: ${Spacing.spacingBase};
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+    padding: ${Spacing.spacingLarge};
+  }
+`
+
+const ArticleLinkWithVisualImage = styled.img`
+  max-height: 175px;
+  place-self: center;
 `
 
 const ArticleLinkWithVisualText = styled.div`
-  background-color: white;
-  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: auto;
+  grid-auto-flow: column;
+
+  @media screen and (min-width: ${Sizes.breakpointXSmall}) {
+    align-self: center;
+  }
 `
 
 const ArticleLinkWithVisualTitle = styled.h4`
-  border-top: 4px solid black;
+  grid-column: 2 / 3;
   margin-bottom: 0;
+
+  &::before {
+    border: 2px solid ${Colors.textColor};
+    content: '';
+    display: block;
+    margin-bottom: ${Spacing.spacingSmall};
+    width: 100%;
+  }
 `
 
 const ArticleLinkWithVisualDate = styled.small`
   font-weight: bold;
-  left: -3rem;
   letter-spacing: 1px;
-  position: absolute;
+  margin-top: ${Spacing.spacingMedium};
+  align-self: start;
+  justify-self: center;
   text-transform: uppercase;
-  top: 14px;
   transform: rotate(-90deg);
+  white-space: nowrap;
 `
 
-const ArticleLinkWithVisualImage = styled.img`
-  height: 175px;
+const ArticleLinkWithVisualLink = styled(Link)`
+  grid-column: 2 / 3;
+  margin-top: ${Spacing.spacingBase};
 `
 
-
-const ArticleLinkWithVisual = ( props ) => (
-
+const ArticleLinkWithVisual = props => (
   <ArticleLinkWithVisualWrapper>
     <ArticleLinkWithVisualImage src={props.image} />
-     <ArticleLinkWithVisualText>
-       <ArticleLinkWithVisualDate>{props.date}</ArticleLinkWithVisualDate>
-       <ArticleLinkWithVisualTitle>{props.title}</ArticleLinkWithVisualTitle>
-       <Link to={props.slug}>Read more</Link>
-     </ArticleLinkWithVisualText>
+    <ArticleLinkWithVisualText>
+      <ArticleLinkWithVisualDate>{props.date}</ArticleLinkWithVisualDate>
+      <ArticleLinkWithVisualTitle>{props.title}</ArticleLinkWithVisualTitle>
+      <ArticleLinkWithVisualLink to={props.slug}>
+        Read more
+      </ArticleLinkWithVisualLink>
+    </ArticleLinkWithVisualText>
   </ArticleLinkWithVisualWrapper>
-
 )
 
 export default ArticleLinkWithVisual

@@ -4,12 +4,7 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import Variables, {
-  Colors,
-  Sizes,
-  Spacing,
-  Zindices,
-} from '../styles/variables'
+import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import ButtonPrimary from './buttonprimary'
 
 import gridPaper from '../images/grid_paper.jpg'
@@ -28,7 +23,7 @@ const ContentWrapper = styled.div`
   grid-template-rows: repeat(7, 1fr);
   margin: 0 auto;
   max-width: ${Sizes.contentWidth};
-  padding: 0px ${Spacing.spacingMedium} ${Spacing.spacingMedium};
+  padding: 0px ${Spacing.spacingLarge} ${Spacing.spacingLarge};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     grid-template-columns: repeat(3, 1fr);
@@ -42,12 +37,12 @@ const ContentWrapper = styled.div`
 `
 
 const JumbotronTextBanner = styled.div`
-  background-color: ${Colors.warmWhite};
-  border: 1px solid ${Colors.barelyTherePink};
+  background-color: ${Colors.pageBackground};
+  border: 1px solid ${Colors.lightBorder};
   border-top: 0;
   grid-column: 1 / 2;
   grid-row: 3 / 8;
-  padding: 150px ${Spacing.spacingMedium} ${Spacing.spacingLarge};
+  padding: 150px ${Spacing.spacingLarge} ${Spacing.spacingXLarge};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     grid-column: 2 / 4;
@@ -81,7 +76,7 @@ const JumbotronImage = styled.img`
   grid-row: 1 / 5;
   justify-self: center;
   margin: 0;
-  max-height: 340px;
+  max-height: 310px;
   z-index: ${Zindices.ceiling};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
@@ -90,7 +85,7 @@ const JumbotronImage = styled.img`
     max-height: 500px;
   }
 
-  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+  @media screen and (min-width: ${Sizes.breakpointLarge}) {
     max-height: 500px;
   }
 `

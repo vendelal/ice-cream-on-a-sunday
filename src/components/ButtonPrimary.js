@@ -5,9 +5,9 @@ import styled from 'styled-components'
 import { Colors } from '../styles/variables'
 
 const StyledLink = styled(Link)`
-  background-color: ${Colors.hotRed};
+  background-color: ${Colors.accentColor};
   border: 2px solid white;
-  box-shadow: -3px 3px 0px -2px ${Colors.hotRed};
+  box-shadow: -3px 3px 0px -2px ${Colors.accentColor};
   color: white;
   font-size: 18px;
   font-weight: 600;
