@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
+import { Colors, Sizes, Spacing } from '../styles/variables'
 
 const ArticleLinkWithVisualWrapper = styled.li`
   align-self: start;
@@ -49,18 +49,18 @@ const ArticleLinkWithVisualText = styled.div`
 const ArticleLinkWithVisualTitle = styled.h4`
   grid-column: 2 / 3;
   margin-bottom: 0;
+  font-size: ${Sizes.fontSizeExtraMedium};
 
   &::before {
     border: 2px solid ${Colors.textColor};
     content: '';
     display: block;
     margin-bottom: ${Spacing.spacingSmall};
-    width: 100%;
+    width: 100 %;
   }
 `
 
 const ArticleLinkWithVisualDate = styled.small`
-  font-weight: bold;
   letter-spacing: 1px;
   margin-top: ${Spacing.spacingMedium};
   align-self: start;

@@ -12,13 +12,13 @@ import ArticleLinkWithVisual from '../components/articlelinkwithvisual'
 import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import { rhythm } from '../utils/typography'
 
-const RecentPostsArea = styled.section`
+const RecentPostsArea = styled.section `
   background-color: ${Colors.warmWhite};
   border-top: 1px solid #f7d3cb;
   border-bottom: 1px solid #f7d3cb;
 `
 
-const RecentPostsContentWrapper = styled.ul`
+const RecentPostsContentWrapper = styled.ul `
   display: grid;
   list-style-type: none;
   margin: 0 auto;
@@ -30,9 +30,9 @@ const RecentPostsContentWrapper = styled.ul`
   }
 `
 
-const RestOfPostsArea = styled.section``
+const RestOfPostsArea = styled.section ``
 
-const RestOfPostsContentWrapper = styled.ul`
+const RestOfPostsContentWrapper = styled.ul `
   display: grid;
   list-style-type: none;
   margin: 0 auto;
@@ -44,25 +44,17 @@ const RestOfPostsContentWrapper = styled.ul`
   }
 `
 
-const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 960px;
-  padding: 0px 1rem;
-`
-
 class HomePage extends React.Component {
-  render() {
-    // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const featuredPost = get(this, 'props.data.featured.edges[0].node')
-    const edges = get(this, 'props.data.nextThree.edges')
-    const nextThreePosts = edges.map(edge => edge.node)
-    const lastEdges = get(this, 'props.data.restFour.edges')
-    const restFourPosts = lastEdges.map(edge => edge.node)
+    render() {
+        // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+        const featuredPost = get(this, 'props.data.featured.edges[0].node')
+        const edges = get(this, 'props.data.nextThree.edges')
+        const nextThreePosts = edges.map(edge => edge.node)
+        const lastEdges = get(this, 'props.data.restFour.edges')
+        const restFourPosts = lastEdges.map(edge => edge.node)
 
-    return (
-      <div>
+        return (
+            <div>
         <Jumbotron
           title={featuredPost.title}
           date={featuredPost.date}
@@ -71,9 +63,7 @@ class HomePage extends React.Component {
           slug="slug"
         />
         <RecentPostsArea>
-          <ContentWrapper>
-            <SectionHeader text="Recent Creations" />
-          </ContentWrapper>
+          <SectionHeader text="Recent Creations" />
           <RecentPostsContentWrapper>
             {nextThreePosts.map(nextThreePosts => (
               <ArticleLinkWithVisual
@@ -87,9 +77,7 @@ class HomePage extends React.Component {
           </RecentPostsContentWrapper>
         </RecentPostsArea>
         <RestOfPostsArea>
-          <ContentWrapper>
-            <SectionHeader text="Recent Creations" />
-          </ContentWrapper>
+          <SectionHeader text="More Posts" />
           <RestOfPostsContentWrapper>
             {restFourPosts.map(restFourPosts => (
               <ArticleLinkWithVisual
@@ -103,13 +91,13 @@ class HomePage extends React.Component {
           </RestOfPostsContentWrapper>
         </RestOfPostsArea>
       </div>
-    )
-  }
+        )
+    }
 }
 
 export default HomePage
 
-export const pageQuery = graphql`
+export const pageQuery = graphql `
   query IndexQuery {
     site {
       siteMetadata {

@@ -9,7 +9,7 @@ import ButtonPrimary from './buttonprimary'
 
 import gridPaper from '../images/grid_paper.jpg'
 
-const JumbotronWrapper = styled.div`
+const JumbotronWrapper = styled.section`
   background-color: ${Colors.paper};
   background-image: url(${gridPaper});
   background-repeat: repeat;
@@ -58,8 +58,8 @@ const JumbotronTextBanner = styled.div`
 const JumbotronTitle = styled.h3`
   border-top: 4px solid black;
   font-family: 'Ahkio-Bold';
-  font-size: 3rem;
-  line-height: 4rem;
+  font-size: ${Sizes.fontSizeLarge};
+  line-height: ${Sizes.lineHeightLarge};
   margin-bottom: 0;
 `
 
