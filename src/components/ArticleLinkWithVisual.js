@@ -7,7 +7,7 @@ import Helmet from 'react-helmet'
 import { Colors, Sizes, Spacing } from '../styles/variables'
 
 const ArticleLinkWithVisualWrapper = styled.li`
-  align-self: start;
+  align-self: baseline;
   display: grid;
   justify-self: stretch;
   padding: ${Spacing.spacingLarge};
@@ -26,12 +26,12 @@ const ArticleLinkWithVisualWrapper = styled.li`
   }
 
   @media screen and (min-width: ${Sizes.breakpointMedium}) {
-    padding: ${Spacing.spacingLarge};
+    padding: ${Spacing.spacingLarge} ${Spacing.spacingSmall};
   }
 `
 
 const ArticleLinkWithVisualImage = styled.img`
-  max-height: 175px;
+  max-width: 150px;
   place-self: center;
 `
 

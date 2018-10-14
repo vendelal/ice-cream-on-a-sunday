@@ -27,7 +27,7 @@ const SectionHeaderText = styled.h3`
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     display: inline-block;
-    margin: ${Spacing.spacingXLarge} auto ${Spacing.spacingMedium};
+    margin: ${Spacing.spacingXLarge} auto auto;
     width: 15rem;
 
     &::before,

@@ -12,49 +12,74 @@ import ArticleLinkWithVisual from '../components/articlelinkwithvisual'
 import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import { rhythm } from '../utils/typography'
 
-const RecentPostsArea = styled.section `
+import gridPaper from '../images/grid_paper.jpg'
+
+const RecentPostsArea = styled.section`
   background-color: ${Colors.warmWhite};
-  border-top: 1px solid #f7d3cb;
-  border-bottom: 1px solid #f7d3cb;
+  border-top: 1px solid ${Colors.lightBorder};
 `
 
-const RecentPostsContentWrapper = styled.ul `
+const RecentPostsContentWrapper = styled.ul`
   display: grid;
   list-style-type: none;
   margin: 0 auto;
   max-width: ${Sizes.contentWidth};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    grid-gap: ${Spacing.spacingMedium};
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
   }
 `
 
-const RestOfPostsArea = styled.section ``
+const RestOfPostsArea = styled.section`
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+  }
+`
 
-const RestOfPostsContentWrapper = styled.ul `
+const RestOfPostsContentWrapper = styled.ul`
   display: grid;
   list-style-type: none;
   margin: 0 auto;
   max-width: ${Sizes.contentWidth};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 5;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(1, 1fr);
   }
 `
 
-class HomePage extends React.Component {
-    render() {
-        // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-        const featuredPost = get(this, 'props.data.featured.edges[0].node')
-        const edges = get(this, 'props.data.nextThree.edges')
-        const nextThreePosts = edges.map(edge => edge.node)
-        const lastEdges = get(this, 'props.data.restFour.edges')
-        const restFourPosts = lastEdges.map(edge => edge.node)
+const GridPaperImage = styled.div`
+  background-color: ${Colors.paper};
+  background-image: url(${gridPaper});
+  background-repeat: repeat;
+  background-size: cover;
+  border-top: 1px solid ${Colors.lightBorder};
+  display: none;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  width: 100%;
 
-        return (
-            <div>
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    display: block;
+  }
+`
+
+class HomePage extends React.Component {
+  render() {
+    // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const featuredPost = get(this, 'props.data.featured.edges[0].node')
+    const edges = get(this, 'props.data.nextThree.edges')
+    const nextThreePosts = edges.map(edge => edge.node)
+    const lastEdges = get(this, 'props.data.restFour.edges')
+    const restFourPosts = lastEdges.map(edge => edge.node)
+
+    return (
+      <div>
         <Jumbotron
           title={featuredPost.title}
           date={featuredPost.date}
@@ -78,6 +103,7 @@ class HomePage extends React.Component {
         </RecentPostsArea>
         <RestOfPostsArea>
           <SectionHeader text="More Posts" />
+          <GridPaperImage />
           <RestOfPostsContentWrapper>
             {restFourPosts.map(restFourPosts => (
               <ArticleLinkWithVisual
@@ -91,13 +117,13 @@ class HomePage extends React.Component {
           </RestOfPostsContentWrapper>
         </RestOfPostsArea>
       </div>
-        )
-    }
+    )
+  }
 }
 
 export default HomePage
 
-export const pageQuery = graphql `
+export const pageQuery = graphql`
   query IndexQuery {
     site {
       siteMetadata {

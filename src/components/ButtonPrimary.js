@@ -2,14 +2,14 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 
-import { Colors } from '../styles/variables'
+import { Colors, Sizes } from '../styles/variables'
 
 const StyledLink = styled(Link)`
   background-color: ${Colors.accentColor};
-  border: 2px solid white;
+  border: 2px solid ${Colors.pageBackground};
   box-shadow: -3px 3px 0px -2px ${Colors.accentColor};
   color: white;
-  font-size: 18px;
+  font-size: ${Sizes.fontSizeBase};
   font-weight: 600;
   letter-spacing: 2px;
   margin-left: 3px;
@@ -17,6 +17,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
   -webkit-appearance: none;
+  white-space: nowrap;
 `
 
 const ButtonPrimary = props => (
