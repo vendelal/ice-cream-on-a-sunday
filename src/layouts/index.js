@@ -2,7 +2,18 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 
+import { Colors, Sizes, Spacing } from '../styles/variables'
 import { rhythm, scale } from '../utils/typography'
+
+const Navigation = styled.nav`
+  background-color: ${Colors.accentColor};
+  padding: ${Spacing.spacingMedium};
+`
+
+const SiteTitle = styled.h1`
+  color: ${Colors.warmWhite};
+  text-decoration: none;
+`
 
 const FooterWrapper = styled.div`
   background-color: black;
@@ -42,23 +53,19 @@ class Template extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <h1 className="nav__site-title">
-          <Link
-            to={'/'}
-          >
-            Ice Cream on a Sunday
-          </Link>
-        </h1>
+        <Navigation>
+          <SiteTitle>
+            <Link to={'/'}>Ice Cream on a Sunday</Link>
+          </SiteTitle>
+        </Navigation>
       )
     } else {
       header = (
-        <h3 className="nav__site-title nav__site-title--small">
-          <Link
-            to={'/'}
-          >
-            Ice Cream on a Sunday
-          </Link>
-        </h3>
+        <Navigation>
+          <SiteTitle>
+            <Link to={'/'}>Ice Cream on a Sunday</Link>
+          </SiteTitle>
+        </Navigation>
       )
     }
 
@@ -66,11 +73,9 @@ class Template extends React.Component {
       <FooterWrapper>
         <ContentWrapper>
           <FooterCTAText>Follow on Instagram</FooterCTAText>
-          <FooterCTAImage></FooterCTAImage>
+          <FooterCTAImage />
           <FooterLinks>
-            <FooterCopyright>
-              Vendela Larsson 2018
-            </FooterCopyright>
+            <FooterCopyright>Vendela Larsson 2018</FooterCopyright>
             <Link to={'www.github.com/icecreamonasunday'}>
               Check out this project on GitHub
             </Link>

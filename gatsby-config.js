@@ -17,8 +17,9 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: {
         spaceId: 'ifq7gjg2x33g',
-        accessToken: '587f19dc563501836bdf746a63164996fae79b1feab6ca085dd46ee1ed57b4f0'
-      }
+        accessToken:
+          '587f19dc563501836bdf746a63164996fae79b1feab6ca085dd46ee1ed57b4f0',
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -50,7 +51,7 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,

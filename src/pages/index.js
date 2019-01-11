@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import ButtonPrimary from '../components/buttonprimary'
-import Jumbotron from '../components/jumbotron'
-import SectionHeader from '../components/sectionheader'
-import ArticleLinkWithVisual from '../components/articlelinkwithvisual'
+import ButtonPrimary from '../components/ButtonPrimary'
+import Jumbotron from '../components/Jumbotron'
+import SectionHeader from '../components/SectionHeader'
+import ArticleLinkWithVisual from '../components/ArticleLinkWithVisual'
 
 import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import { rhythm } from '../utils/typography'
@@ -71,7 +71,7 @@ const GridPaperImage = styled.div`
 
 class HomePage extends React.Component {
   render() {
-    // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const featuredPost = get(this, 'props.data.featured.edges[0].node')
     const edges = get(this, 'props.data.nextThree.edges')
     const nextThreePosts = edges.map(edge => edge.node)
@@ -90,13 +90,10 @@ class HomePage extends React.Component {
         <RecentPostsArea>
           <SectionHeader text="Recent Creations" />
           <RecentPostsContentWrapper>
-            {nextThreePosts.map(nextThreePosts => (
+            {nextThreePosts.map(post => (
               <ArticleLinkWithVisual
-                nextThreePosts={nextThreePosts}
-                title={nextThreePosts.title}
-                date={nextThreePosts.date}
-                image={nextThreePosts.illustrationIngredients.file.url}
-                slug="slug"
+                post={post}
+                imageUrl={post.illustrationIngredients.file.url}
               />
             ))}
           </RecentPostsContentWrapper>
@@ -105,13 +102,10 @@ class HomePage extends React.Component {
           <SectionHeader text="More Posts" />
           <GridPaperImage />
           <RestOfPostsContentWrapper>
-            {restFourPosts.map(restFourPosts => (
+            {restFourPosts.map(post => (
               <ArticleLinkWithVisual
-                restFourPosts={restFourPosts}
-                title={restFourPosts.title}
-                date={restFourPosts.date}
-                image={restFourPosts.illustrationCombined.file.url}
-                slug="slug"
+                post={post}
+                imageUrl={post.illustrationCombined.file.url}
               />
             ))}
           </RestOfPostsContentWrapper>
@@ -160,6 +154,7 @@ export const pageQuery = graphql`
               url
             }
           }
+          slug
         }
       }
     }
@@ -177,6 +172,7 @@ export const pageQuery = graphql`
               url
             }
           }
+          slug
         }
       }
     }

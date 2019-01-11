@@ -75,13 +75,13 @@ const ArticleLinkWithVisualLink = styled(Link)`
   margin-top: ${Spacing.spacingBase};
 `
 
-const ArticleLinkWithVisual = props => (
+const ArticleLinkWithVisual = ({ post, imageUrl }) => (
   <ArticleLinkWithVisualWrapper>
-    <ArticleLinkWithVisualImage src={props.image} />
+    <ArticleLinkWithVisualImage src={imageUrl} />
     <ArticleLinkWithVisualText>
-      <ArticleLinkWithVisualDate>{props.date}</ArticleLinkWithVisualDate>
-      <ArticleLinkWithVisualTitle>{props.title}</ArticleLinkWithVisualTitle>
-      <ArticleLinkWithVisualLink to={props.slug}>
+      <ArticleLinkWithVisualDate>{post.date}</ArticleLinkWithVisualDate>
+      <ArticleLinkWithVisualTitle>{post.title}</ArticleLinkWithVisualTitle>
+      <ArticleLinkWithVisualLink to={post.slug}>
         Read more
       </ArticleLinkWithVisualLink>
     </ArticleLinkWithVisualText>
