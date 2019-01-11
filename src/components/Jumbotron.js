@@ -97,8 +97,8 @@ const Jumbotron = props => (
       <JumbotronTextBanner>
         <JumbotronTitle>{props.title}</JumbotronTitle>
         <JumbotronDate>{props.date}</JumbotronDate>
-        <p>{props.excerpt}</p>
-        <ButtonPrimary text="Give. Me. The. Recipe." destination="#" />
+        <p>{props.excerpt}{props.slug}</p>
+        <ButtonPrimary text="Give. Me. The. Recipe." destination={props.slug} />
       </JumbotronTextBanner>
     </ContentWrapper>
   </JumbotronWrapper>
