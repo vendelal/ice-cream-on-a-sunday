@@ -5,7 +5,7 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
-import ButtonPrimary from './buttonprimary'
+import ButtonPrimary from './ButtonPrimary'
 
 import gridPaper from '../images/grid_paper.jpg'
 
