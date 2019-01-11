@@ -85,7 +85,7 @@ class HomePage extends React.Component {
           date={featuredPost.date}
           excerpt="TODO: fix the rich text Contentful thing."
           illustrationCombined={featuredPost.illustrationCombined.file.url}
-          slug="slug"
+          slug={featuredPost.slug}
         />
         <RecentPostsArea>
           <SectionHeader text="Recent Creations" />
@@ -94,6 +94,7 @@ class HomePage extends React.Component {
               <ArticleLinkWithVisual
                 post={post}
                 imageUrl={post.illustrationIngredients.file.url}
+                slug={post.slug}
               />
             ))}
           </RecentPostsContentWrapper>
@@ -106,6 +107,7 @@ class HomePage extends React.Component {
               <ArticleLinkWithVisual
                 post={post}
                 imageUrl={post.illustrationCombined.file.url}
+                slug={post.slug}
               />
             ))}
           </RestOfPostsContentWrapper>
@@ -137,6 +139,7 @@ export const pageQuery = graphql`
               url
             }
           }
+          slug
         }
       }
     }
