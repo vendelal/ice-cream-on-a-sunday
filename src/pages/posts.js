@@ -2,7 +2,7 @@ import React from 'react'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import ButtonPrimary from '../components/buttonprimary'
+import ButtonPrimary from '../components/ButtonPrimary'
 // import { rhythm } from '../utils/typography'
 
 class BlogIndex extends React.Component {
