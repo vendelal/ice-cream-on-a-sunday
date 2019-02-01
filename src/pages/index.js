@@ -15,11 +15,12 @@ import { rhythm } from '../utils/typography'
 import gridPaper from '../images/grid_paper.jpg'
 
 const RecentPostsArea = styled.section`
-  background-color: ${Colors.warmWhite};
+  background-color: ${Colors.pageBackground};
   border-top: 1px solid ${Colors.lightBorder};
 `
 
 const RecentPostsContentWrapper = styled.ul`
+  background-color: ${Colors.pageBackground};
   display: grid;
   list-style-type: none;
   margin: 0 auto;
@@ -33,6 +34,7 @@ const RecentPostsContentWrapper = styled.ul`
 `
 
 const RestOfPostsArea = styled.section`
+  background-color: ${Colors.pageBackground};
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
@@ -54,7 +56,7 @@ const RestOfPostsContentWrapper = styled.ul`
 `
 
 const GridPaperImage = styled.div`
-  background-color: ${Colors.paper};
+  background-color: ${Colors.pageBackground};
   background-image: url(${gridPaper});
   background-repeat: repeat;
   background-size: cover;

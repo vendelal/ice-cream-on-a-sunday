@@ -10,7 +10,7 @@ import ButtonPrimary from './ButtonPrimary'
 import gridPaper from '../images/grid_paper.jpg'
 
 const JumbotronWrapper = styled.section`
-  background-color: ${Colors.paper};
+  background-color: ${Colors.pageBackground};
   background-image: url(${gridPaper});
   background-repeat: repeat;
   background-size: cover;
