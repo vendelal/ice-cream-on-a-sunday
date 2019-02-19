@@ -1,8 +1,40 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import styled from 'styled-components'
 import get from 'lodash/get'
 
+import SectionHeader from '../components/SectionHeader'
+
+import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import { rhythm, scale } from '../utils/typography'
+
+const RecipePage = styled.div`
+  background-color: ${Colors.pageBackground};
+`
+
+const BlogPostTitleArea = styled.div``
+
+const BlogPostTitle = styled.h1`
+  font-size: ${Colors.fontSizeLarge};
+`
+
+const Illustration = styled.img``
+
+const IngredientsArea = styled.div``
+
+const IngredientsList = styled.ul``
+
+const Ingredient = styled.p``
+
+const IngredientMeasurement = styled.span``
+
+const IngredientName = styled.span``
+
+const InstructionsList = styled.ul``
+
+const Instruction = styled.li``
+
+const Photo = styled.img``
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -10,11 +42,41 @@ class BlogPostTemplate extends React.Component {
     // const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const post = this.props.data.contentfulRecipePost
 
+    const ingredientsList = post.ingredients.listOfIngredients
+    const illustrationUrl = post.illustrationCombined.file.url
+    const photoUrl = post.inTheWildPhoto.file.url
+
     return (
-      <div style={{ background: '#fff' }}>
-        <h1>{post.title}</h1>
-        <h2>{post.date}</h2>
-      </div>
+      <RecipePage>
+        <BlogPostTitleArea>
+          <BlogPostTitle>{post.title}</BlogPostTitle>
+          <time>{post.date}</time>
+          <Illustration src={illustrationUrl} />
+        </BlogPostTitleArea>
+        <SectionHeader text="Ingredients" />
+        <IngredientsList>
+          {ingredientsList.map(item => (
+            <Ingredient>
+              <IngredientMeasurement>
+                {item.measurement}
+              </IngredientMeasurement>
+              <IngredientName>
+                {item.name}
+              </IngredientName>
+            </Ingredient>
+          ))}
+        </IngredientsList>
+        <SectionHeader text="Directions" />
+        <InstructionsList>
+          {post.instructions.map(item => (
+            <Instruction>
+              {item}
+            </Instruction>
+          ))}
+        </InstructionsList>
+        <SectionHeader text="In the Wild" />
+        <Photo src={photoUrl} />
+      </RecipePage>
     )
   }
 }
@@ -26,6 +88,23 @@ export const pageQuery = graphql`
     contentfulRecipePost(slug: { eq: $slug }) {
       title
       date(formatString: "MMMM DD, YYYY")
+      illustrationCombined {
+        file {
+          url
+        }
+      }
+      inTheWildPhoto {
+        file {
+          url
+        }
+      }
+      ingredients {
+        listOfIngredients {
+          name
+          measurement
+        }
+      }
+      instructions
     }
   }
 `
