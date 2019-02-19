@@ -34,6 +34,8 @@ const InstructionsList = styled.ul``
 
 const Instruction = styled.li``
 
+const InTheWildArea = styled.div``
+
 const Photo = styled.img``
 
 class BlogPostTemplate extends React.Component {
@@ -43,15 +45,13 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.contentfulRecipePost
 
     const ingredientsList = post.ingredients.listOfIngredients
-    const illustrationUrl = post.illustrationCombined.file.url
-    const photoUrl = post.inTheWildPhoto.file.url
 
     return (
       <RecipePage>
         <BlogPostTitleArea>
           <BlogPostTitle>{post.title}</BlogPostTitle>
           <time>{post.date}</time>
-          <Illustration src={illustrationUrl} />
+          <Illustration src={post.illustrationCombined.file.url} />
         </BlogPostTitleArea>
         <SectionHeader text="Ingredients" />
         <IngredientsList>
@@ -74,8 +74,12 @@ class BlogPostTemplate extends React.Component {
             </Instruction>
           ))}
         </InstructionsList>
-        <SectionHeader text="In the Wild" />
-        <Photo src={photoUrl} />
+        { post.inTheWildPhoto &&
+          <InTheWildArea>
+            <SectionHeader text="In the Wild" />
+            <Photo src={post.inTheWildPhoto.file.url} />
+          </InTheWildArea>
+        }
       </RecipePage>
     )
   }
