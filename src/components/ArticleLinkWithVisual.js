@@ -46,7 +46,7 @@ const ArticleLinkWithVisualText = styled.div`
   }
 `
 
-const ArticleLinkWithVisualTitle = styled.h4`
+const ArticleLinkWithVisualTitleLink = styled(Link)`
   grid-column: 2 / 3;
   margin-bottom: 0;
   font-size: ${Sizes.fontSizeExtraMedium};
@@ -70,20 +70,17 @@ const ArticleLinkWithVisualDate = styled.small`
   white-space: nowrap;
 `
 
-const ArticleLinkWithVisualLink = styled(Link)`
-  grid-column: 2 / 3;
-  margin-top: ${Spacing.spacingBase};
-`
-
 const ArticleLinkWithVisual = ({ post, imageUrl }) => (
   <ArticleLinkWithVisualWrapper>
-    <ArticleLinkWithVisualImage src={imageUrl} />
+    <ArticleLinkWithVisualImage
+      src={imageUrl}
+      aria-hidden="true" />
     <ArticleLinkWithVisualText>
       <ArticleLinkWithVisualDate>{post.date}</ArticleLinkWithVisualDate>
-      <ArticleLinkWithVisualTitle>{post.title}</ArticleLinkWithVisualTitle>
-      <ArticleLinkWithVisualLink to={post.slug}>
-        Read more
-      </ArticleLinkWithVisualLink>
+      <ArticleLinkWithVisualTitleLink
+        to={post.slug}>
+        {post.title}
+      </ArticleLinkWithVisualTitleLink>
     </ArticleLinkWithVisualText>
   </ArticleLinkWithVisualWrapper>
 )

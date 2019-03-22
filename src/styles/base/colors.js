@@ -1,10 +1,12 @@
-const darkGray = '#4A4A4A'
-const hotRed = '#EF3E23'
-const barelyTherePink = '#F7D3CB'
-const warmWhite = '#F9F9F7'
-const onyx = '#000000'
+const blackSesame = '#4A4A4A'
+const maraschinoCherry = '#EF3E23'
+const hintOfStrawberry = '#F7D3CB'
+const vanilla = '#F9F9F7'
+const blackLiquorice = '#000000'
+const seaSalt = '#DDDDDD'
 
-export const pageBackground = warmWhite
-export const accentColor = hotRed
-export const textColor = onyx
-export const lightBorder = barelyTherePink
+export const pageBackground = vanilla
+export const accentColor = maraschinoCherry
+export const textColor = blackLiquorice
+export const lightBorder = hintOfStrawberry
+export const lightGrayBorder = seaSalt

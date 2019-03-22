@@ -81,7 +81,7 @@ class HomePage extends React.Component {
     const restFourPosts = lastEdges.map(edge => edge.node)
 
     return (
-      <div>
+      <main>
         <Jumbotron
           title={featuredPost.title}
           date={featuredPost.date}
@@ -114,7 +114,7 @@ class HomePage extends React.Component {
             ))}
           </RestOfPostsContentWrapper>
         </RestOfPostsArea>
-      </div>
+      </main>
     )
   }
 }

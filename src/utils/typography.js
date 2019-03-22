@@ -32,6 +32,15 @@ const typography = new Typography({
     h2: {
       fontFamily: ['Ahkio-Bold', 'sans-serif'].join(','),
     },
+    time: {
+      fontFamily: ['CircularStd-Black', 'sans-serif'].join(','),
+      fontSize: '12px',
+      fontWeight: '900',
+      display: 'block',
+      letterSpacing: '0.75px',
+      marginBottom: '0.4rem',
+      textTransform: 'uppercase',
+    }
   }),
 })
 

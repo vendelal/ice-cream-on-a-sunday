@@ -63,12 +63,8 @@ const JumbotronTitle = styled.h3`
   margin-bottom: 0;
 `
 
-const JumbotronDate = styled.small`
-  display: block;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: ${Spacing.spacingBase} 0px;
+const JumbotronDate = styled.time`
+  margin-top: ${Spacing.spacingBase};
 `
 
 const JumbotronImage = styled.img`

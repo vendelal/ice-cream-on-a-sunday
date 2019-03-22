@@ -11,11 +11,11 @@ const Navigation = styled.nav`
 `
 
 const SiteTitle = styled.h1`
-  color: ${Colors.warmWhite};
+  color: ${Colors.pageBackground};
   text-decoration: none;
 `
 
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.footer`
   background-color: black;
   width: 100%;
 `
