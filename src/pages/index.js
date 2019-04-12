@@ -90,7 +90,7 @@ class HomePage extends React.Component {
           slug={featuredPost.slug}
         />
         <RecentPostsArea>
-          <SectionHeader text="Recent Creations" />
+          <SectionHeader text="Recent Creations" centered="true" />
           <RecentPostsContentWrapper>
             {nextThreePosts.map(post => (
               <ArticleLinkWithVisual
@@ -102,7 +102,10 @@ class HomePage extends React.Component {
           </RecentPostsContentWrapper>
         </RecentPostsArea>
         <RestOfPostsArea>
-          <SectionHeader text="More Posts" />
+          <SectionHeader
+            text="More Posts"
+            fullWidth="true"
+            centered="true" />
           <GridPaperImage />
           <RestOfPostsContentWrapper>
             {restFourPosts.map(post => (

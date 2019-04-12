@@ -12,7 +12,6 @@ const StyledLink = styled(Link)`
   font-size: ${Sizes.fontSizeBase};
   font-weight: 600;
   letter-spacing: 2px;
-  margin-left: 3px;
   padding: 6px 12px;
   text-decoration: none;
   text-transform: uppercase;

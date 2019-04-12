@@ -1,11 +1,10 @@
 import Typography from 'typography'
-
-const brandColor = '#EF3E23'
+import { Colors, Sizes } from '../styles/variables'
 
 const typography = new Typography({
   baseFontSize: '16px',
+  bodyColor: Colors.textColor,
   baseLineHeight: 1.5,
-  color: brandColor,
   headerFontFamily: [
     'CircularStd-Bold',
     'Avenir Next',
@@ -27,14 +26,16 @@ const typography = new Typography({
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     h1: {
       fontFamily: ['Ahkio-Bold', 'sans-serif'].join(','),
-      fontSize: '45px',
+      fontSize: Sizes.fontSizeLarge,
+      color: Colors.headerColor,
     },
     h2: {
       fontFamily: ['Ahkio-Bold', 'sans-serif'].join(','),
     },
     time: {
+      color: Colors.headerColor,
       fontFamily: ['CircularStd-Black', 'sans-serif'].join(','),
-      fontSize: '12px',
+      fontSize: Sizes.fontSizeSmall,
       fontWeight: '900',
       display: 'block',
       letterSpacing: '0.75px',

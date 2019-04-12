@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 
 import SectionHeader from '../components/SectionHeader'
+import ButtonPrimary from '../components/ButtonPrimary'
 
 import { Colors, Sizes, Spacing } from '../styles/variables'
 import { rhythm, scale } from '../utils/typography'
@@ -19,6 +20,9 @@ const RecipePage = styled.main`
 const BlogPostTitleArea = styled.header`
   border-top: ${Sizes.borderThick} solid ${Colors.textColor};
   display: grid;
+  grid-template-areas:
+    "title"
+    "meta";
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, auto);
   margin: ${Spacing.spacingXLarge} ${Spacing.spacingMedium};
@@ -27,38 +31,41 @@ const BlogPostTitleArea = styled.header`
   position: relative;
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    grid-gap: ${Spacing.spacingMedium};
+    grid-gap: ${Spacing.spacingLarge};
+    grid-template-areas:
+      "title  meta";
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-    margin: ${Spacing.spacingXLarge} auto;
+    margin: ${Spacing.spacingXLarge} ${Spacing.spacingMedium} 0;
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointLarge}) {
+    margin: ${Spacing.spacingXLarge} auto 0;
   }
 `
 
 const BlogPostTitle = styled.h1`
   font-size: ${Colors.fontSizeLarge};
-  grid-column: 1 / 1;
-  grid-row: 1 / 2;
+  grid-area: title;
   padding-right: ${Spacing.spacingXLarge};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    grid-column: 1 / 2;
-    grid-row: 1 / 1;
     padding-right: 0;
   }
 `
 
 const RecipeMeta = styled.div`
-  grid-column: 1 / 1;
-  grid-row: 2 / 3;
-  padding-right: ${Spacing.spacingXXLarge};
+  grid-area: meta;
+  padding-right: ${Spacing.spacingXLarge};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    margin-left: ${Spacing.spacingMedium};
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+    margin: 0;
   }
 `
-
-const RecipeDescription = styled.p``
 
 const Illustration = styled.img`
   max-width: 150px;
@@ -76,28 +83,39 @@ const Illustration = styled.img`
 
 const RecipeArea = styled.section`
   display: grid;
+  grid-template-areas:
+    "ingredients-header"
+    "ingredients"
+    "directions-header"
+    "directions"
+    "photo"
+    "share-button";
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(5, auto);
   margin: 0 auto;
   max-width: ${Sizes.contentWidth};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    grid-gap: ${Spacing.spacingMedium};
+    grid-gap:  ${Spacing.spacingLarge};
+    grid-template-areas:
+      "ingredients-header directions-header"
+      "ingredients        directions       "
+      "photo              directions       "
+      "photo              directions       "
+      ".........          share-button     ";
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto 1fr;
   }
 `
 
-const IngredientsHeader = styled(SectionHeader)`
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-`
-
-const IngredientsList = styled.ul`
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
+const Ingredients = styled.ul`
+  grid-area: ingredients;
   list-style-type: none;
-  margin: 0 ${Spacing.spacingMedium};
+  margin: 0 0 0 ${Spacing.spacingMedium};
+
+  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+    margin: 0;
+  }
 `
 
 const Ingredient = styled.p`
@@ -110,9 +128,10 @@ const Ingredient = styled.p`
 `
 
 const IngredientMeasurement = styled.span`
+  color: ${Colors.headerColor};
+  display: inline-block;
   font-weight: 900;
   text-align: right;
-  display: inline-block;
   width:
 `
 
@@ -123,35 +142,34 @@ const IngredientName = styled.span`
   line-height: ${Sizes.lineHeightMedium};
 `
 
-const InstructionsHeader = styled(SectionHeader)`
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-
-  @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-  }
-`
-
-const InstructionsList = styled.ol`
-  grid-column: 1 / 2;
-  grid-row: 4 / 5;
+const Directions = styled.ol`
+  grid-area: directions;
   list-style-type: none;
   margin: 0 ${Spacing.spacingMedium};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    margin: 0;
+    margin: 0 ${Spacing.spacingMedium};
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointLarge}) {
+    margin: 0 0 ${Spacing.spacingXLarge} 0;
   }
 `
 
 const Instruction = styled.li``
 
+const PhotoArea = styled.section`
+  grid-area: photo;
+`
+
 const Photo = styled.img`
   box-sizing:
   margin: ${Spacing.spacingMedium};
   max-width: 300px;
+`
+
+const ShareButton = styled(ButtonPrimary)`
+  grid-area: share-button;
 `
 
 class BlogPostTemplate extends React.Component {
@@ -160,7 +178,7 @@ class BlogPostTemplate extends React.Component {
     // const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const post = this.props.data.contentfulRecipePost
 
-    const ingredientsList = post.ingredients.listOfIngredients
+    const ingredients = post.ingredients.listOfIngredients
     const illustrationUrl = post.illustrationSeparate && post.illustrationSeparate.file.url
     const photoUrl = post.inTheWildPhoto && post.inTheWildPhoto.file.url
 
@@ -170,16 +188,16 @@ class BlogPostTemplate extends React.Component {
           <BlogPostTitle>{post.title}</BlogPostTitle>
           <RecipeMeta>
             <time>{post.date}</time>
-            <RecipeDescription>
+            <p>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-            </RecipeDescription>
+            </p>
           </RecipeMeta>
           <Illustration src={illustrationUrl} />
         </BlogPostTitleArea>
         <RecipeArea>
-          <IngredientsHeader text="Ingredients" />
-          <IngredientsList>
-            {ingredientsList.map(item => (
+          <SectionHeader text="Ingredients" fullWidth="true" />
+          <Ingredients>
+            {ingredients.map(item => (
               <Ingredient>
                 <IngredientMeasurement>
                   {item.measurement}
@@ -189,17 +207,20 @@ class BlogPostTemplate extends React.Component {
                 </IngredientName>
               </Ingredient>
             ))}
-          </IngredientsList>
-          <InstructionsHeader text="Directions" />
-          <InstructionsList>
+          </Ingredients>
+          <SectionHeader text="Directions" fullWidth="true" />
+          <Directions>
             {post.instructions.map(item => (
               <Instruction>
                 {item}
               </Instruction>
             ))}
-          </InstructionsList>
-          <SectionHeader text="In the Wild" />
-          <Photo src={photoUrl} />
+            <ShareButton text="Share this recipe" />
+          </Directions>
+          <PhotoArea>
+            <SectionHeader text="In the Wild" fullWidth="true" />
+            <Photo src={photoUrl} />
+          </PhotoArea>
         </RecipeArea>
       </RecipePage>
     )

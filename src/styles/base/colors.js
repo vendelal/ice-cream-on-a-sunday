@@ -7,6 +7,7 @@ const seaSalt = '#DDDDDD'
 
 export const pageBackground = vanilla
 export const accentColor = maraschinoCherry
-export const textColor = blackLiquorice
+export const textColor = blackSesame
+export const headerColor = blackLiquorice
 export const lightBorder = hintOfStrawberry
 export const lightGrayBorder = seaSalt

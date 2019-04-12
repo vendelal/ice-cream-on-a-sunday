@@ -8,68 +8,68 @@ import { Colors, Sizes, Spacing } from '../styles/variables'
 
 const SectionHeaderWrapper = styled.header`
   display: grid;
-  margin: 0 auto;
+  margin: ${Spacing.spacingXLarge} ${Spacing.spacingMedium} ${Spacing.spacingLarge};
   max-width: ${Sizes.contentWidth};
+  position: relative;
+
+  &::before {
+    background-color: ${Colors.accentColor};
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 1.1rem;
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    margin: ${Spacing.spacingXLarge} 0 ${Spacing.spacingLarge} ${Spacing.spacingMedium};
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+    margin: ${props => (props.centered ? '4rem auto 2rem' : '4rem auto 2rem 0')};
+    width: ${props => (props.fullWidth ? '100%' : 'auto')};
+  }
 `
 
 const SectionHeaderText = styled.h3`
   border: 1px solid ${Colors.accentColor};
+  background-color: ${Colors.pageBackground};
   color: ${Colors.accentColor};
   display: block;
   font-size: ${Sizes.fontSizeBase};
   letter-spacing: 2px;
-  margin: ${Spacing.spacingXLarge} ${Spacing.spacingLarge}
-    ${Spacing.spacingLarge};
+  margin: 0 auto 0 0;
   text-align: center;
   text-transform: uppercase;
-  padding: ${Spacing.spacingSmall} ${Spacing.spacingBase};
-  position: relative;
+  padding: ${Spacing.spacingSmall} ${Spacing.spacingLarge};
+  z-index: 1;
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    display: inline-block;
-    margin: ${Spacing.spacingXLarge} auto auto;
-    width: 15rem;
-
-    &::before,
-    &::after {
-      background-color: ${Colors.accentColor};
-      content: '';
-      display: block;
-      height: 1px;
-      position: absolute;
-      top: 50%;
-      width: 12rem;
-    }
-
-    &::before {
-      left: -12rem;
-    }
-
-    &::after {
-      right: -12rem;
-    }
+    // margin: ${props => (props.centered ? '4rem auto' : '4rem auto auto 0')};
+    margin-bottom: auto;
   }
 
   @media screen and (min-width: ${Sizes.breakpointMedium}) {
-    &::before,
-    &::after {
-      width: 22rem;
-    }
-
-    &::before {
-      left: -22rem;
-    }
-
-    &::after {
-      right: -22rem;
-    }
+    margin: ${props => (props.centered ? '0 auto auto' : '0 auto auto 0')};
   }
 `
 
 const SectionHeader = props => (
-  <SectionHeaderWrapper>
-    <SectionHeaderText>{props.text}</SectionHeaderText>
+  <SectionHeaderWrapper
+    centered={props.centered}
+    fullWidth={props.fullWidth}
+    >
+    <SectionHeaderText
+      centered={props.centered}
+    >
+      {props.text}
+    </SectionHeaderText>
   </SectionHeaderWrapper>
 )
 
 export default SectionHeader
+
+
+// ${props => (props.centered ? '0' : '10px')};

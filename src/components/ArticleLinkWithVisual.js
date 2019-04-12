@@ -60,12 +60,10 @@ const ArticleLinkWithVisualTitleLink = styled(Link)`
   }
 `
 
-const ArticleLinkWithVisualDate = styled.small`
-  letter-spacing: 1px;
+const ArticleLinkWithVisualDate = styled.time`
   margin-top: ${Spacing.spacingMedium};
   align-self: start;
   justify-self: center;
-  text-transform: uppercase;
   transform: rotate(-90deg);
   white-space: nowrap;
 `

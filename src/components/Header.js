@@ -4,8 +4,9 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 const SectionHeader = styled.h2`
-  width: 960px;
+  position: relative;
   text-align: {props.position};
+  width: 960px;
 `
 
 const Header = props => (
