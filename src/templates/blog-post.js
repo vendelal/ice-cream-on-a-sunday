@@ -179,6 +179,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.contentfulRecipePost
 
     const ingredients = post.ingredients.listOfIngredients
+    const directions = post.directions.listOfDirections
     const illustrationUrl = post.illustrationSeparate && post.illustrationSeparate.file.url
     const photoUrl = post.inTheWildPhoto && post.inTheWildPhoto.file.url
 
@@ -210,7 +211,7 @@ class BlogPostTemplate extends React.Component {
           </Ingredients>
           <SectionHeader text="Directions" fullWidth="true" />
           <Directions>
-            {post.instructions.map(item => (
+            {directions.map(item => (
               <Instruction>
                 {item}
               </Instruction>
@@ -250,7 +251,9 @@ export const pageQuery = graphql`
           measurement
         }
       }
-      instructions
+      directions {
+        listOfDirections
+      }
     }
   }
 `
