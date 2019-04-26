@@ -1,8 +1,8 @@
-export const contentWidth = '60rem'
+export const contentWidth = '63rem'
 export const breakpointXSmall = '25rem'
 export const breakpointSmall = '40rem'
 export const breakpointMedium = '50rem'
-export const breakpointLarge = '60rem'
+export const breakpointLarge = '63rem'
 
 export const fontSizeSmall = '0.75rem'
 export const fontSizeBase = '1rem'

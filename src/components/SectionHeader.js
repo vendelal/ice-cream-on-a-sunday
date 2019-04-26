@@ -8,7 +8,7 @@ import { Colors, Sizes, Spacing } from '../styles/variables'
 
 const SectionHeaderWrapper = styled.header`
   display: grid;
-  margin: ${Spacing.spacingXLarge} ${Spacing.spacingMedium} ${Spacing.spacingLarge};
+  margin: ${Spacing.spacingXLarge} 0 ${Spacing.spacingLarge};
   max-width: ${Sizes.contentWidth};
   position: relative;
 
@@ -24,7 +24,7 @@ const SectionHeaderWrapper = styled.header`
   }
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    margin: ${Spacing.spacingXLarge} 0 ${Spacing.spacingLarge} ${Spacing.spacingMedium};
+    margin: ${Spacing.spacingXLarge} 0 ${Spacing.spacingLarge};
   }
 
   @media screen and (min-width: ${Sizes.breakpointMedium}) {
@@ -70,6 +70,3 @@ const SectionHeader = props => (
 )
 
 export default SectionHeader
-
-
-// ${props => (props.centered ? '0' : '10px')};

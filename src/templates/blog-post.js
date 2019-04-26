@@ -94,9 +94,10 @@ const RecipeArea = styled.section`
   grid-template-rows: repeat(5, auto);
   margin: 0 auto;
   max-width: ${Sizes.contentWidth};
+  padding: 0 ${Spacing.spacingMedium};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    grid-gap:  ${Spacing.spacingLarge};
+    grid-gap: ${Spacing.spacingLarge};
     grid-template-areas:
       "ingredients-header directions-header"
       "ingredients        directions       "
@@ -106,16 +107,16 @@ const RecipeArea = styled.section`
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto auto 1fr;
   }
+
+  @media screen and (min-width: ${Sizes.breakpointLarge}) {
+    padding: 0;
+  }
 `
 
 const Ingredients = styled.ul`
   grid-area: ingredients;
   list-style-type: none;
-  margin: 0 0 0 ${Spacing.spacingMedium};
-
-  @media screen and (min-width: ${Sizes.breakpointMedium}) {
-    margin: 0;
-  }
+  margin: 0;
 `
 
 const Ingredient = styled.p`
@@ -148,7 +149,7 @@ const Directions = styled.ol`
   margin: 0 ${Spacing.spacingMedium};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    margin: 0 ${Spacing.spacingMedium};
+    margin: 0 ${Spacing.spacingMedium} 0 0;
   }
 
   @media screen and (min-width: ${Sizes.breakpointLarge}) {
