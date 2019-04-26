@@ -47,9 +47,11 @@ const ArticleLinkWithVisualText = styled.div`
 `
 
 const ArticleLinkWithVisualTitleLink = styled(Link)`
+  color: ${Colors.headerColor};
   grid-column: 2 / 3;
   margin-bottom: 0;
   font-size: ${Sizes.fontSizeExtraMedium};
+  font-weight: bold;
 
   &::before {
     border: 2px solid ${Colors.textColor};

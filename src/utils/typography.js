@@ -25,8 +25,9 @@ const typography = new Typography({
   ],
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     h1: {
-      fontFamily: ['Ahkio-Bold', 'sans-serif'].join(','),
+      fontFamily: ['Ahkio', 'sans-serif'].join(','),
       fontSize: Sizes.fontSizeLarge,
+      fontWeight: 'normal',
       color: Colors.headerColor,
     },
     h2: {
@@ -34,13 +35,17 @@ const typography = new Typography({
     },
     time: {
       color: Colors.headerColor,
-      fontFamily: ['CircularStd-Black', 'sans-serif'].join(','),
+      fontFamily: ['CircularStd', 'sans-serif'].join(','),
       fontSize: Sizes.fontSizeSmall,
-      fontWeight: '900',
+      fontWeight: '400',
       display: 'block',
       letterSpacing: '0.75px',
       marginBottom: '0.4rem',
       textTransform: 'uppercase',
+    },
+    a: {
+      textDecoration: 'none',
+      cursor: 'pointer',
     }
   }),
 })

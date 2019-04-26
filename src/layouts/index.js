@@ -2,12 +2,13 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 
+import SiteHeader from '../components/SiteHeader'
+
 import { Colors, Sizes, Spacing } from '../styles/variables'
 import { rhythm, scale } from '../utils/typography'
 
 const Navigation = styled.nav`
-  background-color: ${Colors.accentColor};
-  padding: ${Spacing.spacingMedium};
+
 `
 
 const SiteTitle = styled.h1`
@@ -53,19 +54,11 @@ class Template extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <Navigation>
-          <SiteTitle>
-            <Link to={'/'}>Ice Cream on a Sunday</Link>
-          </SiteTitle>
-        </Navigation>
+        <SiteHeader />
       )
     } else {
       header = (
-        <Navigation>
-          <SiteTitle>
-            <Link to={'/'}>Ice Cream on a Sunday</Link>
-          </SiteTitle>
-        </Navigation>
+        <SiteHeader />
       )
     }
 

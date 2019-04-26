@@ -31,6 +31,10 @@ const RecentPostsContentWrapper = styled.ul`
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
   }
+
+  @media screen and (min-width: ${Sizes.breakpointMedium}) {
+    grid-gap: ${Spacing.spacingXLarge};
+  }
 `
 
 const RestOfPostsArea = styled.section`
