@@ -35,7 +35,7 @@ const typography = new Typography({
       fontFamily: ['Ahkio-Regular', 'sans-serif'].join(','),
     },
     h3: {
-      fontFamily: ['Circular-Regular', 'sans-serif'].join(','),
+      fontFamily: ['Circular-Bold', 'sans-serif'].join(','),
     },
     time: {
       color: Colors.headerColor,

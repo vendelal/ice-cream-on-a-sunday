@@ -33,8 +33,8 @@ const SiteTitle = styled(Link)`
   font-family: 'Ahkio-Bold', 'sans-serif';
   font-size: ${props => props.fontSize};
   line-height: 0.85;
-  padding-bottom: ${Spacing.spacingSmallest};
   margin-left: -${Spacing.spacingSmall};
+  padding-bottom: ${Spacing.spacingBase};
   transform: rotate(-9deg);
 
   &::before {

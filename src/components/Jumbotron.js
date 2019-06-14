@@ -41,7 +41,6 @@ const ContentWrapper = styled.div`
 const JumbotronTextBanner = styled.div`
   background-color: ${Colors.pageBackground};
   border: 1px solid ${Colors.lightBorder};
-  border-top: 0;
   grid-column: 1 / 2;
   grid-row: 3 / 8;
   padding: 150px ${Spacing.spacingLarge} ${Spacing.spacingXLarge};
