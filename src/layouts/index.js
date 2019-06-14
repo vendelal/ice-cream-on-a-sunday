@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import SiteHeader from '../components/SiteHeader'
 
 import { Colors, Sizes, Spacing } from '../styles/variables'
+import GlobalStyles from '../styles/global-styles'
 import { rhythm, scale } from '../utils/typography'
 
 const Navigation = styled.nav`

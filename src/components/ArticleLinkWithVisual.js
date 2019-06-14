@@ -63,8 +63,10 @@ const ArticleLinkWithVisualTitleLink = styled(Link)`
 `
 
 const ArticleLinkWithVisualDate = styled.time`
-  margin-top: ${Spacing.spacingMedium};
   align-self: start;
+  font-family: "Circular-Regular";
+  font-weight: 400;
+  margin-top: ${Spacing.spacingMedium};
   justify-self: center;
   transform: rotate(-90deg);
   white-space: nowrap;

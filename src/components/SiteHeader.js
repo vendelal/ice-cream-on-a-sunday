@@ -4,13 +4,19 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import { Colors, Sizes, Spacing } from '../styles/variables'
+import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
+import hamburgerMenu from '../images/hamburger-menu.svg'
 
 const SiteHeaderWrapper = styled.header`
   background-color: ${Colors.accentColor};
-  padding: ${Spacing.spacingMedium};
+  padding: ${Spacing.spacingSmall} ${Spacing.spacingMedium} ${Spacing.spacingBase};
   position: sticky;
   top: 0;
+  z-index: ${Zindices.ceiling};
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    padding: ${Spacing.spacingMedium};
+  }
 `
 
 const Navigation = styled.nav`
@@ -23,10 +29,11 @@ const Navigation = styled.nav`
 
 const SiteTitle = styled(Link)`
   color: ${Colors.pageBackground};
+  display: block;
   font-family: 'Ahkio-Bold', 'sans-serif';
   font-size: ${props => props.fontSize};
-  line-height: 1;
-  margin-bottom: ${Spacing.spacingBase};
+  line-height: 0.85;
+  padding-bottom: ${Spacing.spacingSmallest};
   margin-left: -${Spacing.spacingSmall};
   transform: rotate(-9deg);
 
@@ -34,15 +41,35 @@ const SiteTitle = styled(Link)`
     content: '';
     display: inline-block;
     height: ${Spacing.spacingSmall};
+    margin-bottom: ${Spacing.spacingBase};
     width: ${Spacing.spacingSmall};
   }
 `
 
+const MobileMenuButton = styled.button`
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  color: ${Colors.pageBackground};
+  cursor: pointer;
+  font-weight: bold;
+  height: 21px;
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    display: none;
+  }
+`
+
 const LinksList = styled.ul`
-  display: flex;
-  justify-content: flex-end;
+  display: none;
+  justify-content: center;
   list-style-type: none;
   margin: 0;
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    display: flex;
+    justify-content: flex-end;
+  }
 `
 
 const ListItem = styled.li`
@@ -57,7 +84,7 @@ class SiteHeader extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      titleFontSize: `56px`,
+      titleFontSize: `70px`,
     }
   }
 
@@ -66,11 +93,14 @@ class SiteHeader extends React.Component {
   }
 
   handleScroll = (event) => {
-    let scrollTop = document.documentElement.scrollTop
+    let main = document.getElementsByTagName('main')[0]
+    let fromTop = main.pageYOffset
     let size
 
-    if (scrollTop === 0) {
-      size = 56
+    if (fromTop <= 70 || fromTop === 0) {
+      size = 70
+      // size = Math.round(70 - ((fromTop / 72) * (70 - 24)))
+      console.log("fromTop " + fromTop)
     } else {
       size = 24
     }
@@ -92,6 +122,9 @@ class SiteHeader extends React.Component {
           >
             Ice Cream <br />on a Sunday
           </SiteTitle>
+          <MobileMenuButton>
+            Menu <span aria-hidden="true">😋</span>
+          </MobileMenuButton>
           <LinksList>
             <ListItem>
               <NavLink to={'/'}>Home</NavLink>

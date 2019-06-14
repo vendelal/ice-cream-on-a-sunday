@@ -6,8 +6,9 @@ import get from 'lodash/get'
 import SectionHeader from '../components/SectionHeader'
 import ButtonPrimary from '../components/ButtonPrimary'
 
-import { Colors, Sizes, Spacing } from '../styles/variables'
+import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import { rhythm, scale } from '../utils/typography'
+
 
 const RecipePage = styled.main`
   background-color: ${Colors.pageBackground};
@@ -45,7 +46,6 @@ const BlogPostTitleArea = styled.header`
 `
 
 const BlogPostTitle = styled.h1`
-  font-size: ${Colors.fontSizeLarge};
   grid-area: title;
   padding-right: ${Spacing.spacingXLarge};
 
@@ -72,7 +72,7 @@ const Illustration = styled.img`
   position: absolute;
   right: -40px;
   top: 20px;
-  z-index: 99;
+  z-index: ${Zindices.modal};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     max-width: 300px;
@@ -131,13 +131,14 @@ const Ingredient = styled.p`
 const IngredientMeasurement = styled.span`
   color: ${Colors.headerColor};
   display: inline-block;
+  font-size: 18px;
   font-weight: 900;
   text-align: right;
   width:
 `
 
 const IngredientName = styled.span`
-  font-size: ${Sizes.fontSizeSmall};
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: ${Sizes.lineHeightMedium};

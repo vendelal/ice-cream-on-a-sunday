@@ -4,8 +4,10 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
+
 import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import ButtonPrimary from './ButtonPrimary'
+import { rhythm, scale } from '../utils/typography'
 
 import gridPaper from '../images/grid_paper.jpg'
 
@@ -55,10 +57,8 @@ const JumbotronTextBanner = styled.div`
   }
 `
 
-const JumbotronTitle = styled.h3`
+const JumbotronTitle = styled.h1`
   border-top: 4px solid black;
-  font-family: 'Ahkio-Bold';
-  font-size: ${Sizes.fontSizeLarge};
   line-height: ${Sizes.lineHeightLarge};
   margin-bottom: 0;
 `
@@ -73,7 +73,7 @@ const JumbotronImage = styled.img`
   justify-self: center;
   margin: 0;
   max-height: 310px;
-  z-index: ${Zindices.ceiling};
+  z-index: ${Zindices.modal};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     grid-column: 1 / 2;
