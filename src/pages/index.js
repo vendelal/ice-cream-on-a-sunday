@@ -155,7 +155,7 @@ export const pageQuery = graphql`
       }
     }
     nextThree: allContentfulRecipePost(
-      sort: { fields: [date], order: ASC }
+      sort: { fields: [date], order: DESC }
       skip: 1
       limit: 3
     ) {
@@ -173,7 +173,7 @@ export const pageQuery = graphql`
       }
     }
     restFour: allContentfulRecipePost(
-      sort: { fields: [date], order: ASC }
+      sort: { fields: [date], order: DESC }
       skip: 4
       limit: 4
     ) {
