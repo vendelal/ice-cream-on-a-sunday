@@ -138,7 +138,7 @@ export const pageQuery = graphql`
       }
     }
     featured: allContentfulRecipePost(
-      sort: { fields: [date], order: ASC }
+      sort: { fields: [date], order: DESC }
       limit: 1
     ) {
       edges {
