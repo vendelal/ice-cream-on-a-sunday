@@ -30,10 +30,11 @@ const RecentPostsContentWrapper = styled.ul`
     grid-gap: ${Spacing.spacingMedium};
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
+    padding-bottom: ${Spacing.spacingXLarge};
   }
 
   @media screen and (min-width: ${Sizes.breakpointMedium}) {
-    grid-gap: ${Spacing.spacingXLarge};
+    grid-gap: ${Spacing.spacingXXLarge};
   }
 `
 
@@ -56,6 +57,7 @@ const RestOfPostsContentWrapper = styled.ul`
     grid-row: 2 / 5;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(1, 1fr);
+    margin-bottom: ${Spacing.spacingXXLarge};
   }
 `
 

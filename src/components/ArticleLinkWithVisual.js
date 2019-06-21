@@ -32,6 +32,7 @@ const ArticleLinkWithVisualWrapper = styled.li`
 
 const ArticleLinkWithVisualImage = styled.img`
   max-width: 150px;
+  padding-bottom: ${Spacing.spacingLarge};
   place-self: center;
 `
 

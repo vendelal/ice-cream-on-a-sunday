@@ -4,13 +4,13 @@ import styled from 'styled-components'
 
 import SiteHeader from '../components/SiteHeader'
 
+import instagramIcon from '../images/instagram-logo.svg'
+import linkArrow from '../images/link-arrow.svg'
+
 import { Colors, Sizes, Spacing } from '../styles/variables'
 import GlobalStyles from '../styles/global-styles'
 import { rhythm, scale } from '../utils/typography'
 
-const Navigation = styled.nav`
-
-`
 
 const SiteTitle = styled.h1`
   color: ${Colors.pageBackground};
@@ -18,17 +18,13 @@ const SiteTitle = styled.h1`
 `
 
 const FooterWrapper = styled.footer`
+  align-items: center;
   background-color: black;
-  width: 100%;
-`
-
-const ContentWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem;
+  padding: ${Spacing.spacingXLarge};
+  width: 100%;
 `
 
 const FooterCTAText = styled.a`
@@ -37,11 +33,30 @@ const FooterCTAText = styled.a`
   letter-spacing: 2px;
 `
 
-const FooterCTAImage = styled.img``
+const InstagramIcon = styled.img`
+  margin-top: ${Spacing.spacingSmall};
+`
 
 const FooterLinks = styled.div``
 
-const FooterCopyright = styled.small``
+const GitHubLink = styled.a`
+  color: ${Colors.linkColor};
+
+  &:hover {
+    color: #D2DBF9;
+    transition: color 500ms ease;
+  }
+
+  &::after {
+    content: url(${linkArrow});
+    display: inline-block;
+    margin-left: ${Spacing.spacingSmall};
+  }
+`
+
+const FooterCopyright = styled.small`
+  margin-right: ${Spacing.spacingBase};
+`
 
 class Template extends React.Component {
   render() {
@@ -65,16 +80,20 @@ class Template extends React.Component {
 
     let footer = (
       <FooterWrapper>
-        <ContentWrapper>
-          <FooterCTAText>Follow on Instagram</FooterCTAText>
-          <FooterCTAImage />
-          <FooterLinks>
-            <FooterCopyright>Vendela Larsson 2018</FooterCopyright>
-            <Link to={'www.github.com/icecreamonasunday'}>
-              Check out this project on GitHub
-            </Link>
-          </FooterLinks>
-        </ContentWrapper>
+        <FooterCTAText
+          href={'https://www.instagram.com/icecreamonasunday'}>
+          Follow on Instagram
+        </FooterCTAText>
+        <InstagramIcon
+          src={instagramIcon}
+        />
+        <FooterLinks>
+          <FooterCopyright>© Vendela Larsson 2018</FooterCopyright>
+          <GitHubLink
+            href={'https://github.com/vendelal/ice-cream-on-a-sunday'}>
+            Check out this project on GitHub
+          </GitHubLink>
+        </FooterLinks>
       </FooterWrapper>
     )
 

@@ -38,6 +38,7 @@ const BlogPostTitleArea = styled.header`
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     margin: ${Spacing.spacingXLarge} ${Spacing.spacingMedium} 0;
+    padding: ${Spacing.spacingXLarge} 0 ${Spacing.spacingMedium};
   }
 
   @media screen and (min-width: ${Sizes.breakpointLarge}) {
