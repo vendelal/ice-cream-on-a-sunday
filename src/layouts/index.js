@@ -37,7 +37,16 @@ const InstagramIcon = styled.img`
   margin-top: ${Spacing.spacingSmall};
 `
 
-const FooterLinks = styled.div``
+const FooterLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    align-items: baseline;
+    flex-direction: row;
+  }
+`
 
 const GitHubLink = styled.a`
   color: ${Colors.linkColor};
