@@ -6,6 +6,7 @@ import Helmet from 'react-helmet'
 
 import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
 import hamburgerMenu from '../images/hamburger-menu.svg'
+import activeLinkDrip from '../images/active-link-drip.svg'
 
 const SiteHeaderWrapper = styled.header`
   background-color: ${Colors.accentColor};
@@ -80,6 +81,12 @@ const NavLink = styled(Link)`
   color: ${Colors.pageBackground};
 `
 
+const activeLinkStyle = {
+  borderBottom: "4px solid",
+  fontFamily: "Circular-Bold",
+  paddingBottom: 5,
+}
+
 class SiteHeader extends React.Component {
   constructor(props) {
     super(props)
@@ -127,13 +134,24 @@ class SiteHeader extends React.Component {
           </MobileMenuButton>
           <LinksList>
             <ListItem>
-              <NavLink to={'/'}>Home</NavLink>
+              <NavLink
+                to={'/'}
+                activeStyle={activeLinkStyle}>
+                Home
+              </NavLink>
             </ListItem>
             <ListItem>
-              <NavLink to={'/posts'}>All Recipes</NavLink>
+              <NavLink to={'/posts'}
+              activeStyle={activeLinkStyle}>
+              All Recipes
+            </NavLink>
             </ListItem>
             <ListItem>
-              <NavLink to={'/'}>About</NavLink>
+              <NavLink
+                to={'/'}
+                activeStyle={activeLinkStyle}>
+                About
+              </NavLink>
             </ListItem>
           </LinksList>
         </Navigation>
