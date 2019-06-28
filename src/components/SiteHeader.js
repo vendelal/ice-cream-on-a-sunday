@@ -130,7 +130,7 @@ class SiteHeader extends React.Component {
               <NavLink to={'/'}>Home</NavLink>
             </ListItem>
             <ListItem>
-              <NavLink to={'/'}>All Recipes</NavLink>
+              <NavLink to={'/posts'}>All Recipes</NavLink>
             </ListItem>
             <ListItem>
               <NavLink to={'/'}>About</NavLink>
