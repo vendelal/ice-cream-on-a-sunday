@@ -79,7 +79,7 @@ const JumbotronDate = styled.time`
 `
 
 const JumbotronImage = styled.img`
-  animation-delay: 1000ms;
+  animation-delay: 700ms;
   animation-duration: 500ms;
   animation-fill-mode: both;
   animation-name: fade-in-down;

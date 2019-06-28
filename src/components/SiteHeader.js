@@ -13,7 +13,7 @@ const SiteHeaderWrapper = styled.header`
   padding: ${Spacing.spacingSmall} ${Spacing.spacingMedium} ${Spacing.spacingBase};
   position: sticky;
   top: 0;
-  z-index: ${Zindices.ceiling};
+  z-index: ${Zindices.modal};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     padding: ${Spacing.spacingMedium};
@@ -21,21 +21,28 @@ const SiteHeaderWrapper = styled.header`
 `
 
 const Navigation = styled.nav`
-  align-items: flex-end;
+  align-items: center;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 0 auto;
   max-width: ${Sizes.contentWidth};
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `
 
 const SiteTitle = styled(Link)`
   color: ${Colors.pageBackground};
   display: block;
   font-family: 'Ahkio-Bold', 'sans-serif';
-  font-size: ${props => props.fontSize};
+  // font-size: ${props => props.fontSize};
+  font-size: 1.5rem;
   line-height: 0.85;
-  margin-left: -${Spacing.spacingSmall};
-  padding-bottom: ${Spacing.spacingBase};
+  margin: ${Spacing.spacingSmall} -${Spacing.spacingSmall} ${Spacing.spacingBase};
+  padding-bottom: ${Spacing.spacingSmall};
   transform: rotate(-9deg);
 
   &::before {
@@ -44,6 +51,11 @@ const SiteTitle = styled(Link)`
     height: ${Spacing.spacingSmall};
     margin-bottom: ${Spacing.spacingBase};
     width: ${Spacing.spacingSmall};
+  }
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    font-size: 2rem;
+    margin: 0 -${Spacing.spacingSmall};
   }
 `
 
@@ -62,15 +74,12 @@ const MobileMenuButton = styled.button`
 `
 
 const LinksList = styled.ul`
-  display: none;
+  // display: none;
+  display: flex;
+  justify-content: flex-end;
   justify-content: center;
   list-style-type: none;
   margin: 0;
-
-  @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    display: flex;
-    justify-content: flex-end;
-  }
 `
 
 const ListItem = styled.li`
@@ -129,9 +138,6 @@ class SiteHeader extends React.Component {
           >
             Ice Cream <br />on a Sunday
           </SiteTitle>
-          <MobileMenuButton>
-            Menu <span aria-hidden="true">😋</span>
-          </MobileMenuButton>
           <LinksList>
             <ListItem>
               <NavLink
@@ -161,3 +167,8 @@ class SiteHeader extends React.Component {
 }
 
 export default SiteHeader
+
+
+// <MobileMenuButton>
+//             Menu <span aria-hidden="true">😋</span>
+//           </MobileMenuButton>

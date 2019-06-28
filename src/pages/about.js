@@ -12,7 +12,7 @@ const AboutPageWrapper = styled.main`
 `
 
 const AboutPageTitle = styled.h1`
-  width: 20ch;
+  max-width: 20ch;
 `
 
 const Content = styled.div`
@@ -39,7 +39,9 @@ const Content = styled.div`
 `
 
 const Text = styled.div`
-  width: 55%;
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    width: 55%;
+  }
 `
 
 const AboutText = styled.p`
@@ -49,7 +51,10 @@ const AboutText = styled.p`
 
 const FeaturedIllustration = styled.img`
   height: min-content;
-  width: 45%;
+
+  @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    width: 45%;
+  }
 `
 
 class AboutPage extends React.Component {

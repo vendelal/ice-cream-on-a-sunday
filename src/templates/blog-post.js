@@ -14,7 +14,7 @@ const RecipePage = styled.main`
   background-color: ${Colors.pageBackground};
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  // overflow-x: hidden;
   position: relative;
 `
 
@@ -73,7 +73,7 @@ const Illustration = styled.img`
   position: absolute;
   right: -40px;
   top: 20px;
-  z-index: ${Zindices.modal};
+  z-index: ${Zindices.ceiling};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     max-width: 300px;
@@ -194,9 +194,7 @@ class BlogPostTemplate extends React.Component {
           <BlogPostTitle>{post.title}</BlogPostTitle>
           <RecipeMeta>
             <time>{post.date}</time>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-            </p>
+            <p>{post.description}</p>
           </RecipeMeta>
           <Illustration src={illustrationUrl} />
         </BlogPostTitleArea>
@@ -240,6 +238,7 @@ export const pageQuery = graphql`
     contentfulRecipePost(slug: { eq: $slug }) {
       title
       date(formatString: "MMMM DD, YYYY")
+      description
       illustrationSeparate {
         file {
           url
