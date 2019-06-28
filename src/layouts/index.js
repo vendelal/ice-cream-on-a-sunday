@@ -11,6 +11,7 @@ import SiteHeader from '../components/SiteHeader'
 
 import instagramIcon from '../images/instagram-logo.svg'
 import linkArrow from '../images/link-arrow.svg'
+import metaImage from '../images/pistachio-combined.png'
 
 import { Colors, Sizes, Spacing } from '../styles/variables'
 import GlobalStyles from '../styles/global-styles'
@@ -106,6 +107,14 @@ class Template extends React.Component {
             name: "keywords",
             content: "ice cream, blog, sundae, sunday",
           },
+          {
+            name: "og:image",
+            content: {metaImage},
+          },
+          {
+            name: "og:type",
+            content: "blog",
+          },
         ]}
         link={[
           { rel: "icon", type: "image/png", sizes: "16x16", href: `${favicon16}` },
@@ -135,6 +144,7 @@ class Template extends React.Component {
 
     return (
       <div>
+        {helmet}
         {header}
         {children()}
         {footer}
