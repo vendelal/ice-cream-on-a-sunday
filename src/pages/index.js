@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
 
 import ButtonPrimary from '../components/ButtonPrimary'
 import Jumbotron from '../components/Jumbotron'

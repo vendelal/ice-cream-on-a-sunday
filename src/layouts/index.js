@@ -1,6 +1,11 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
+import Helmet from 'react-helmet'
+import get from 'lodash/get'
+
+import favicon16 from "../images/favicon-16x16.png";
+import favicon32 from "../images/favicon-32x32.png";
 
 import SiteHeader from '../components/SiteHeader'
 
@@ -87,6 +92,28 @@ class Template extends React.Component {
       )
     }
 
+    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+
+    let helmet = (
+      <Helmet
+        title={siteTitle}
+        meta={[
+          {
+            name: "description",
+            content: "Ice Cream on a Sunday - A blog about ice cream",
+          },
+          {
+            name: "keywords",
+            content: "ice cream, blog, sundae, sunday",
+          },
+        ]}
+        link={[
+          { rel: "icon", type: "image/png", sizes: "16x16", href: `${favicon16}` },
+          { rel: "icon", type: "image/png", sizes: "32x32", href: `${favicon32}` },
+        ]}
+      />
+    )
+
     let footer = (
       <FooterWrapper>
         <FooterCTAText
@@ -97,7 +124,7 @@ class Template extends React.Component {
           src={instagramIcon}
         />
         <FooterLinks>
-          <FooterCopyright>© Vendela Larsson 2019</FooterCopyright>
+          <FooterCopyright>© Vendela Larsson {new Date().getFullYear()}</FooterCopyright>
           <GitHubLink
             href={'https://github.com/vendelal/ice-cream-on-a-sunday'}>
             Check out this project on GitHub
@@ -117,3 +144,13 @@ class Template extends React.Component {
 }
 
 export default Template
+
+export const pageQuery = graphql`
+  query HomeQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
