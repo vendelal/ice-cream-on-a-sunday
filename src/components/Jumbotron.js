@@ -56,9 +56,12 @@ const JumbotronTextBanner = styled.div`
   }
 `
 
-const JumbotronTitle = styled.h1`
+const JumbotronTitleWrapper = styled.div`
   border-top: 4px solid black;
-  line-height: ${Sizes.lineHeightLarge};
+  padding: ${Spacing.spacingBase} 0;
+`
+
+const JumbotronTitle = styled.h1`
   margin-bottom: 0;
 `
 
@@ -90,7 +93,9 @@ const Jumbotron = props => (
     <ContentWrapper>
       <JumbotronImage src={props.illustrationCombined} />
       <JumbotronTextBanner>
-        <JumbotronTitle>{props.title}</JumbotronTitle>
+        <JumbotronTitleWrapper>
+          <JumbotronTitle>{props.title}</JumbotronTitle>
+        </JumbotronTitleWrapper>
         <JumbotronDate>{props.date}</JumbotronDate>
         <p>{props.excerpt}{props.slug}</p>
         <ButtonPrimary text="Give me the recipe" destination={props.slug} />

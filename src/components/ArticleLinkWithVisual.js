@@ -10,7 +10,7 @@ const ArticleLinkWithVisualWrapper = styled.li`
   align-self: baseline;
   display: grid;
   justify-self: stretch;
-  padding: ${Spacing.spacingLarge};
+  padding: ${Spacing.spacingLarge} 0;
 
   @media screen and (min-width: ${Sizes.breakpointXSmall}) {
     grid-template-columns: 33% 1fr;

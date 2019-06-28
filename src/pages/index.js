@@ -17,6 +17,7 @@ import gridPaper from '../images/grid_paper.jpg'
 const RecentPostsArea = styled.section`
   background-color: ${Colors.pageBackground};
   border-top: 1px solid ${Colors.lightBorder};
+  padding: 0 ${Spacing.spacingLarge};
 `
 
 const RecentPostsContentWrapper = styled.ul`
@@ -40,6 +41,8 @@ const RecentPostsContentWrapper = styled.ul`
 
 const RestOfPostsArea = styled.section`
   background-color: ${Colors.pageBackground};
+  padding: ${Spacing.spacingLarge};
+
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
