@@ -31,9 +31,18 @@ const ArticleLinkWithVisualWrapper = styled.li`
 `
 
 const ArticleLinkWithVisualImage = styled.img`
+  animation-delay: 300ms;
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+  animation-name: fade-in-down;
+  animation-timing-function: ease-out;
   max-width: 150px;
   padding-bottom: ${Spacing.spacingLarge};
   place-self: center;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `
 
 const ArticleLinkWithVisualText = styled.div`

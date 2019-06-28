@@ -39,11 +39,20 @@ const ContentWrapper = styled.div`
 `
 
 const JumbotronTextBanner = styled.div`
+  animation-delay: 300ms;
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+  animation-name: fade-in-down;
+  animation-timing-function: ease-out;
   background-color: ${Colors.pageBackground};
   border: 1px solid ${Colors.lightBorder};
   grid-column: 1 / 2;
   grid-row: 3 / 8;
   padding: 150px ${Spacing.spacingLarge} ${Spacing.spacingXLarge};
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     grid-column: 2 / 4;
@@ -70,6 +79,11 @@ const JumbotronDate = styled.time`
 `
 
 const JumbotronImage = styled.img`
+  animation-delay: 1000ms;
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+  animation-name: fade-in-down;
+  animation-timing-function: ease-out;
   grid-column: 1 / 2;
   grid-row: 1 / 5;
   justify-self: center;
@@ -77,7 +91,12 @@ const JumbotronImage = styled.img`
   max-height: 310px;
   z-index: ${Zindices.modal};
 
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
+    animation-name: fade-in-right;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     max-height: 500px;
