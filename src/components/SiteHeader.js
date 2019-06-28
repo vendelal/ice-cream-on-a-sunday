@@ -148,7 +148,7 @@ class SiteHeader extends React.Component {
             </ListItem>
             <ListItem>
               <NavLink
-                to={'/'}
+                to={'/about'}
                 activeStyle={activeLinkStyle}>
                 About
               </NavLink>
