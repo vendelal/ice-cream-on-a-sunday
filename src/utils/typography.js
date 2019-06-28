@@ -48,8 +48,9 @@ const typography = new Typography({
       textTransform: 'uppercase',
     },
     a: {
-      textDecoration: 'none',
+      color: Colors.darkLinkColor,
       cursor: 'pointer',
+      textDecoration: 'none',
     }
   }),
 })

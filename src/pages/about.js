@@ -50,7 +50,7 @@ const AboutText = styled.p`
 `
 
 const FeaturedIllustration = styled.img`
-  height: min-content;
+  height: 80%;
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     width: 45%;

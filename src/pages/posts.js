@@ -43,6 +43,7 @@ const AllPostsWrapper = styled.ul`
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
     grid-gap: ${Spacing.spacingBase};
+    width: 100%;
   }
 `
 

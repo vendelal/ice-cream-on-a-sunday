@@ -94,7 +94,7 @@ class HomePage extends React.Component {
         <Jumbotron
           title={featuredPost.title}
           date={featuredPost.date}
-          excerpt="TODO: fix the rich text Contentful thing."
+          excerpt={featuredPost.description}
           illustrationCombined={featuredPost.illustrationCombined.file.url}
           slug={featuredPost.slug}
         />
@@ -148,6 +148,7 @@ export const pageQuery = graphql`
         node {
           title
           date(formatString: "MMMM DD, YYYY")
+          description
           illustrationCombined {
             file {
               url

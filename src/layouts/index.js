@@ -97,7 +97,7 @@ class Template extends React.Component {
           src={instagramIcon}
         />
         <FooterLinks>
-          <FooterCopyright>© Vendela Larsson 2018</FooterCopyright>
+          <FooterCopyright>© Vendela Larsson 2019</FooterCopyright>
           <GitHubLink
             href={'https://github.com/vendelal/ice-cream-on-a-sunday'}>
             Check out this project on GitHub

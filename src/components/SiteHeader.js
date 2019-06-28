@@ -133,7 +133,7 @@ class SiteHeader extends React.Component {
       <SiteHeaderWrapper>
         <Navigation>
           <SiteTitle
-            to={'/'}
+            exact to={'/'}
             fontSize={this.state.titleFontSize}
           >
             Ice Cream <br />on a Sunday
@@ -141,20 +141,21 @@ class SiteHeader extends React.Component {
           <LinksList>
             <ListItem>
               <NavLink
-                to={'/'}
+                exact to={'/'}
                 activeStyle={activeLinkStyle}>
                 Home
               </NavLink>
             </ListItem>
             <ListItem>
-              <NavLink to={'/posts'}
+              <NavLink
+              exact to={'/posts'}
               activeStyle={activeLinkStyle}>
               All Recipes
             </NavLink>
             </ListItem>
             <ListItem>
               <NavLink
-                to={'/about'}
+                exact to={'/about'}
                 activeStyle={activeLinkStyle}>
                 About
               </NavLink>
