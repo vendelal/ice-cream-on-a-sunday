@@ -45,6 +45,7 @@ const RestOfPostsArea = styled.section`
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
+    padding: 0;
   }
 `
 

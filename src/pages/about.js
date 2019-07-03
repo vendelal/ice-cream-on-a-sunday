@@ -69,15 +69,15 @@ class AboutPage extends React.Component {
               Why did I make a blog about ice cream?
             </AboutPageTitle>
             <AboutText>
-              In the late fall of 2016 my boyfriend asked the question every person who's in a relationship laments over during the last few months of every year: "What do you want for Christmas?" Instead of the elloquent, standard response of "Uh I don't know" I said "I want an ice cream maker." I'm still not entirely sure why, but I do know that ice cream is delicious.
+              In the late fall of 2016 I asked for an ice cream maker for Christmas. I'm still not entirely sure why, but I do know that ice cream is delicious.
                 <br /><br />
-                Being someone who is more "art" than "science" (AKA I don't like measuring things, keeping track of what I've added, or generally remembering details) eventually I started forgetting the flavors I had already made. Luckily my day job of being a web designer and front-end developer gave me the skills to make something to allow me to remember the flavors and keep track of the recipes (since they come from all different sources and inspirations).
+                Being someone who is more "art" than "science" (a fancy way of saying I don't like measuring things, keeping track of what I've added, or generally remembering details) eventually I started forgetting the flavors I had already made. Luckily my day job of being a web designer and front-end developer gave me the skills to make something to remember the flavors and keep track of the recipes (since they come from all different sources and inspirations).
                 <br /><br />
-                I'm pretty lucky to work at a <a href="https://thoughtbot.com/">company</a> which gives me <a href="https://thoughtbot.com/playbook/our-company/time">investment time</a> so I started nerding out about which technologies to use to power this blog. The version you're seeing now is version 2, and I already hate it and want to build v3 🤓. This blog has been an excellent learning tool, and I can't wait to do more fancy things with it. If you're curious about the technology behind this blog, check out the <a href="https://github.com/vendelal/ice-cream-on-a-sunday">github repo</a>.
+                I'm pretty lucky to work at a <a href="https://thoughtbot.com/">company</a> which gives me <a href="https://thoughtbot.com/playbook/our-company/time">investment time</a> so I started nerding out about which technologies to use to power this blog. The version you're seeing now is version 2, and I already hate it and want to build version 3 🤓. This blog has been a pretty sweet learning tool, and I can't wait to do more fancy things with it. If you're curious about the technology behind this blog, check out the <a href="https://github.com/vendelal/ice-cream-on-a-sunday">github repo</a>.
                 <br /><br />
-                Thanks for checking it out, I hope you enjoy the recipes and tell all your friends about it and make it famous enough for me to receive free ice cream in the mail or something!
+                I hope you enjoy the recipes and tell all your friends about it so it gets famous enough for me to receive free ice cream in the mail or something!
                 <br /><br />
-                <em>All illustrations and photos are done by me. All the recipes are written by me, even if they were heavily inspired by ones I found somewhere else!</em>
+                <em>All illustrations and photos are done by me. All the recipes are written by me, even if they were inspired by ones I found somewhere else!</em>
             </AboutText>
           </Text>
           <FeaturedIllustration src={posts[1].node.illustrationCombined.file.url}/>

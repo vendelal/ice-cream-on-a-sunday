@@ -8,14 +8,20 @@ import { Colors, Sizes, Spacing } from '../styles/variables'
 
 const ArticleLinkWithVisualWrapper = styled.li`
   align-self: baseline;
+  cursor: pointer;
   display: grid;
   justify-self: stretch;
-  padding: ${Spacing.spacingLarge} 0;
+`
+
+const LinkWrapper = styled(Link)`
+  cursor: pointer;
+  display: grid;
+  justify-self: stretch;
 
   @media screen and (min-width: ${Sizes.breakpointXSmall}) {
     grid-template-columns: 33% 1fr;
     grid-template-rows: 1fr;
-    padding: 0 ${Spacing.spacingLarge};
+    padding: 0;
   }
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
@@ -56,7 +62,7 @@ const ArticleLinkWithVisualText = styled.div`
   }
 `
 
-const ArticleLinkWithVisualTitleLink = styled(Link)`
+const ArticleLinkWithVisualTitle = styled.p`
   color: ${Colors.headerColor};
   grid-column: 2 / 3;
   margin-bottom: 0;
@@ -84,16 +90,19 @@ const ArticleLinkWithVisualDate = styled.time`
 
 const ArticleLinkWithVisual = ({ post, imageUrl }) => (
   <ArticleLinkWithVisualWrapper>
-    <ArticleLinkWithVisualImage
-      src={imageUrl}
-      aria-hidden="true" />
-    <ArticleLinkWithVisualText>
-      <ArticleLinkWithVisualDate>{post.date}</ArticleLinkWithVisualDate>
-      <ArticleLinkWithVisualTitleLink
-        to={post.slug}>
+    <LinkWrapper to={post.slug}>
+      <ArticleLinkWithVisualImage
+        src={imageUrl}
+        aria-hidden="true" />
+      <ArticleLinkWithVisualText>
+      <ArticleLinkWithVisualDate>
+        {post.date}
+      </ArticleLinkWithVisualDate>
+      <ArticleLinkWithVisualTitle>
         {post.title}
-      </ArticleLinkWithVisualTitleLink>
-    </ArticleLinkWithVisualText>
+      </ArticleLinkWithVisualTitle>
+      </ArticleLinkWithVisualText>
+    </LinkWrapper>
   </ArticleLinkWithVisualWrapper>
 )
 

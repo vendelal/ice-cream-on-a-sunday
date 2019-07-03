@@ -37,12 +37,13 @@ const AllPostsTitleArea = styled.header`
 
 const AllPostsWrapper = styled.ul`
   display: grid;
-  margin: 0 auto;
+  margin: 0 ${Spacing.spacingLarge};
   max-width: ${Sizes.contentWidth};
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
     grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
     grid-gap: ${Spacing.spacingBase};
+    margin: 0 auto;
     width: 100%;
   }
 `

@@ -99,11 +99,11 @@ const JumbotronImage = styled.img`
     animation-name: fade-in-right;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    max-height: 500px;
+    max-height: 580px;
   }
 
   @media screen and (min-width: ${Sizes.breakpointLarge}) {
-    max-height: 500px;
+    max-height: 580px;
   }
 `
 
@@ -116,7 +116,7 @@ const Jumbotron = props => (
           <JumbotronTitle>{props.title}</JumbotronTitle>
         </JumbotronTitleWrapper>
         <JumbotronDate>{props.date}</JumbotronDate>
-        <p>{props.excerpt}{props.slug}</p>
+        <p>{props.excerpt}</p>
         <ButtonPrimary text="Give me the recipe" destination={props.slug} />
       </JumbotronTextBanner>
     </ContentWrapper>
