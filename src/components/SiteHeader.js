@@ -5,6 +5,7 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 import { Colors, Sizes, Spacing, Zindices } from '../styles/variables'
+import logo from '../images/logo.svg'
 import hamburgerMenu from '../images/hamburger-menu.svg'
 import activeLinkDrip from '../images/active-link-drip.svg'
 
@@ -35,27 +36,14 @@ const Navigation = styled.nav`
 `
 
 const SiteTitle = styled(Link)`
-  color: ${Colors.pageBackground};
   display: block;
-  font-family: 'Ahkio-Bold', 'sans-serif';
-  // font-size: ${props => props.fontSize};
-  font-size: 1.5rem;
-  line-height: 0.85;
-  margin: ${Spacing.spacingSmall} -${Spacing.spacingSmall} ${Spacing.spacingBase};
-  padding-bottom: ${Spacing.spacingSmall};
-  transform: rotate(-9deg);
+`
 
-  &::before {
-    content: '';
-    display: inline-block;
-    height: ${Spacing.spacingSmall};
-    margin-bottom: ${Spacing.spacingBase};
-    width: ${Spacing.spacingSmall};
-  }
+const Logo = styled.img`
+  width: 400px;
 
   @media screen and (min-width: ${Sizes.breakpointSmall}) {
-    font-size: 2rem;
-    margin: 0 -${Spacing.spacingSmall};
+    margin-bottom: 0;
   }
 `
 
@@ -134,9 +122,8 @@ class SiteHeader extends React.Component {
         <Navigation>
           <SiteTitle
             exact to={'/'}
-            fontSize={this.state.titleFontSize}
           >
-            Ice Cream <br />on a Sunday
+            <Logo src={logo} />
           </SiteTitle>
           <LinksList>
             <ListItem>

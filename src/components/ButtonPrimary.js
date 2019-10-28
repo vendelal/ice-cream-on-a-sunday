@@ -9,6 +9,7 @@ const StyledLink = styled(Link)`
   border: 2px solid ${Colors.pageBackground};
   box-shadow: -3px 3px 0px -2px ${Colors.accentColor};
   color: white;
+  font-family: "Ice Cream Hnad";
   font-size: ${Sizes.fontSizeBase};
   font-weight: 600;
   letter-spacing: 2px;

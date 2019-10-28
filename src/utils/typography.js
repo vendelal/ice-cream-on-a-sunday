@@ -26,7 +26,7 @@ const typography = new Typography({
   ],
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     h1: {
-      fontFamily: ['Ahkio-Regular', 'sans-serif'].join(','),
+      fontFamily: ['Circular-Bold', 'sans-serif'].join(','),
       fontSize: Sizes.fontSizeLarge,
       fontWeight: 'normal',
       color: Colors.headerColor,

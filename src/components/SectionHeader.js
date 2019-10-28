@@ -38,7 +38,8 @@ const SectionHeaderText = styled.h3`
   background-color: ${Colors.pageBackground};
   color: ${Colors.accentColor};
   display: block;
-  font-size: ${Sizes.fontSizeBase};
+  font-family: "Ice Cream Hnad";
+  font-size: ${Sizes.fontSizeSmall};
   letter-spacing: 2px;
   margin: 0 auto 0 0;
   text-align: center;
